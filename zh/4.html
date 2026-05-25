@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>最简单的情形 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 4}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>最简单的情形</h1>
+<p class="a rotatedFloralHeartBullet">
+
+
+<p>现在让我们看看，怎样从基本原理出发，
+对一些简单的代数表达式求导。
+
+<p><h3>情形 1</h3>
+我们从简单的表达式 $y=x^2$ 开始。
+请记住，微积分的根本想法就是<em>增长</em>。
+数学家把它叫作<em>变化</em>。既然 $y$ 和 $x^2$ 彼此相等，
+那么很明显，如果 $x$ 增长，$x^2$ 也会增长。
+而如果 $x^2$ 增长，$y$ 也会增长。
+我们必须找出的，是 $y$ 的增长和 $x$ 的增长之间的比例。
+换句话说，我们的任务就是找出 $dy$ 和 $dx$ 之间的比值，
+简言之，就是找出 $\dfrac{dy}{dx}$ 的值。
+
+<p>那么，让 $x$ 稍微增长一点，变成 $x + dx$；
+同样，$y$ 也会稍微增长一点，变成 $y + dy$。
+显然，放大后的 $y$ 仍然等于放大后的 $x$ 的平方。
+写下来就是：
+\begin{align*}
+y + dy &= (x + dx)^2.\\
+\text{平方展开得到：}\;\\
+y + dy &= x^2 + 2x · dx+(dx)^2.
+\end{align*}
+
+
+<p>$(dx)^2$ 是什么意思？记住，$dx$ 表示 $x$ 的一小点。
+那么 $(dx)^2$ 就表示 $x$ 的一小点的一小点；
+也就是说，如前面（<a href="2.html#smallness">这里</a>）解释过的，
+它是一个二阶小量。因此和其他项相比，
+它完全微不足道，可以舍去。把它省掉后，我们得到：<a name="diffexample"/>
+\begin{align*}
+y + dy &= x^2 + 2x · dx.  \\
+\text{现在 } y=x^2\text{；从方程中减去它，剩下}\;\\
+dy &= 2x · dx.  \\
+\text{两边除以 } dx\text{，得到}\;\\
+\frac{dy}{dx} &= 2x.
+\end{align*}
+
+<p>现在，<em>这</em>*
+就是我们一开始要找的东西。在眼前这个例子中，
+$y$ 的增长和 $x$ 的增长之比被求出为 $2x$。
+<p><note>*<em>附注</em>，这个比值 $\dfrac{dy}{dx}$ 是对 $y$ 关于 $x$ 求导的结果。
+  求导就是求导数。假设我们有另一个 $x$ 的函数，
+  例如 $u = 7x^2 + 3$。如果有人要求我们对它关于 $x$ 求导，
+  我们就必须求 $\dfrac{du}{dx}$，或者说同一件事，
+  求 $\dfrac{d(7x^2 + 3)}{dx}$。另一方面，我们也可能遇到时间是自变量的情形
+  （见<a href="3.html#indvar">这里</a>），比如：
+  $y = b + \frac{1}{2} at^2$。那么，如果有人要求我们对它求导，
+  意思就是我们必须求它关于 $t$ 的导数。所以我们要做的事就是设法求
+  $\dfrac{dy}{dt}$，也就是求
+  $\dfrac{d(b + \frac{1}{2} at^2)}{dt}$。</note>
+
+<p>
+<em>数值例子。</em><p>
+假设 $x=100$，且 $\therefore y=10,000$。然后让 $x$ 增长到 $101$
+（也就是令 $dx=1$）。那么放大后的 $y$ 就是
+$101 × 101 = 10,201$。但如果我们同意可以忽略二阶小量，
+那么与 $10,000$ 相比，$1$ 可以舍去；
+于是可以把放大后的 $y$ 约为 $10,200$。
+$y$ 从 $10,000$ 增长到 $10,200$；添上的那一小点就是 $dy$，
+所以它是 $200$。
+
+<p>$\dfrac{dy}{dx} = \dfrac{200}{1} = 200$。
+根据上一段的代数推算，我们得到 $\dfrac{dy}{dx} = 2x$。
+确实如此；因为 $x=100$，而 $2x=200$。
+
+<p>可是你会说，我们忽略了整整一个单位。
+
+<p>好，那就再试一次，把 $dx$ 取得更小些。
+
+<p>试取 $dx=\frac{1}{10}$。于是 $x+dx=100.1$，并且
+\[
+(x+dx)^2 = 100.1 × 100.1 = 10,020.01.
+\]
+
+<p>现在最后那个数字 $1$ 只是 $10,000$ 的百万分之一，
+完全可以忽略；所以我们可以取 $10,020$，
+不带末尾那一点小小的小数部分。于是 $dy=20$；
+而 $\dfrac{dy}{dx} = \dfrac{20}{0.1} = 200$，
+仍然和 $2x$ 相同。
+
+<p>
+<h3>情形 2</h3>
+试着用同样的方法对 $y = x^3$ 求导。
+
+<p>让 $y$ 增长为 $y+dy$，同时让 $x$ 增长为 $x+dx$。
+
+<p>于是得到
+\[
+y + dy = (x + dx)^3.
+\]
+
+
+<p>展开立方，得到
+\[
+y + dy = x^3 + 3x^2 · dx + 3x(dx)^2+(dx)^3.
+\]
+
+<p>现在我们知道，可以忽略二阶和三阶小量；
+因为当 $dy$ 和 $dx$ 都变得无限小时，
+$(dx)^2$ 和 $(dx)^3$ 相比之下会变得无限更小。
+因此，把它们看作可忽略后，剩下：
+\[
+y + dy=x^3+3x^2 · dx.
+\]
+
+<p>但 $y=x^3$；减去这一项，得到：
+\begin{align*}
+dy &= 3x^2 · dx, \\
+\text{并且}\;
+\frac{dy}{dx} &= 3x^2.
+\end{align*}
+
+<h3>情形 3</h3>
+试着对 $y=x^4$ 求导。仍像前面一样，
+先让 $y$ 和 $x$ 都增长一点，得到：
+\begin{align*}
+y + dy &= (x+dx)^4.  \\
+\end{align*}
+展开四次方，得到
+\begin{align*}
+y + dy &= x^4 + 4x^3\, dx + 6x^2(dx)^2 + 4x(dx)^3+(dx)^4.  \\
+\end{align*}
+把所有含有 $dx$ 高次幂的项划掉，因为相比之下它们可以忽略，于是得到
+\begin{align*}
+y + dy &= x^4+4x^3\, dx.  \\
+\end{align*}
+
+减去原来的 $y=x^4$，剩下
+\begin{align*}
+dy &= 4x^3\, dx, \\
+\text{并且}\;
+\frac{dy}{dx} &= 4x^3.
+\end{align*}
+
+<p><hr>
+
+
+<p>现在这些情形都相当容易。把结果汇总起来，
+看看能不能推出某条一般规则。把它们列成两栏，
+一栏放 $y$ 的值，另一栏放对应求得的 $\dfrac{dy}{dx}$ 的值：
+如下
+<table>
+  <tr><th>$y$</th><th>$\frac{dy}{dx}$</th></tr>
+  <tr><td>$x^2$</td><td>$2x$</td></tr>
+  <tr><td>$x^3$</td><td>$3x^2$</td></tr>
+  <tr><td>$x^4$</td><td>$4x^3$</td></tr>
+</table>
+
+
+<p><a name="diffrule1"/>
+看看这些结果：求导这个操作似乎把 $x$ 的幂降低了 $1$，
+例如最后一个情形中把 $x^4$ 降成 $x^3$；
+同时还乘上了一个数，这个数其实正是原来的幂。
+一旦看出这一点，你很容易猜到其他情形会怎样。
+你会预期，对 $x^5$ 求导会得到 $5x^4$，
+对 $x^6$ 求导会得到 $6x^5$。
+如果你犹豫，就试一个看看这个猜想是否正确。
+
+<p>试取 $y = x^5$。
+\begin{align*}
+\text{于是}\;
+y+dy &= (x+dx)^5     \\
+     &= x^5 + 5x^4\, dx + 10x^3(dx)^2  + 10x^2(dx)^3 \\
+     &\phantom{{}= x^5 + 5x^4\, dx} + 5x(dx)^4 + (dx)^5.
+\end{align*}
+
+<p>忽略所有含有高阶小量的项，剩下
+\begin{align*}
+y + dy &= x^5 + 5x^4\, dx,  \\
+
+\text{再减去}\;
+y &= x^5 \text{，剩下} \\
+dy &= 5x^4\, dx,  \\
+ \text{因此}\;
+\frac{dy}{dx} &= 5x^4, \text{，正如我们所料。}
+\end{align*}
+
+<p><hr>
+
+<p>顺着我们的观察合乎逻辑地推下去，
+如果要处理任何更高的幂，把它叫作 $n$，
+我们也可以用同样的方法来办。
+<p> 令 $y = x^n,$ <p>那么，我们预期会得到 <p>
+<p>$\frac{dy}{dx} = nx^{(n-1)}$.
+
+<p>例如，令 $n=8$，那么 $y=x^8$；
+对它求导会得到 $\dfrac{dy}{dx} = 8x^7$。
+
+<p>事实上，对 $x^n$ 求导得到 $nx^{n-1}$ 这条规则，
+在 $n$ 是正整数的所有情形中都成立。
+[用二项式定理展开 $(x + dx)^n$，马上就能看出这一点。]
+但是，当 $n$ 为负数或分数时，这条规则是否成立，
+还需要进一步考虑。
+
+<p>
+<em>负幂的情形。</em><p>
+令 $y = x^{-2}$。然后照前面那样进行：
+\begin{align*}
+y+dy &= (x+dx)^{-2} \\
+     &= x^{-2} \left(1 + \frac{dx}{x}\right)^{-2}.
+\end{align*}
+
+用二项式定理展开它（见<a href="14.html#binomtheo">这里</a>），
+得到
+\begin{align*}
+&=x^{-2} \left[1 - \frac{2\, dx}{x} +
+    \frac{2(2+1)}{1×2} \left(\frac{dx}{x}\right)^2 -
+    \text{等等}\right]  \\
+&=x^{-2} - 2x^{-3} · dx + 3x^{-4}(dx)^2 - 4x^{-5}(dx)^3 + \text{等等} \\
+\end{align*}
+
+
+  所以，忽略更高阶的小量，得到：
+\begin{align*}
+
+       y + dy &= x^{-2} - 2x^{-3} · dx.
+\end{align*}
+
+减去原来的 $y = x^{-2}$，得到
+\begin{align*}
+
+           dy &= -2x^{-3}dx,   \\
+\frac{dy}{dx} &= -2x^{-3}.
+\end{align*}
+这仍然符合上面推出的规则。
+
+<p>
+<em>分数幂的情形。</em><p>
+令 $y= x^{\frac{1}{2}}$。那么，和前面一样，
+
+
+\begin{align*}
+y+dy &= (x+dx)^{\frac{1}{2}} = x^{\frac{1}{2}} (1 + \frac{dx}{x} )^{\frac{1}{2}} \\
+
+
+     &= \sqrt{x} + \frac{1}{2} \frac{dx}{\sqrt{x}} - \frac{1}{8}
+        \frac{(dx)^2}{x\sqrt{x}} + \text{含有 } dx \text{ 的更高次幂的项。}
+\end{align*}
+
+<p>减去原来的 $y = x^{\frac{1}{2}}$，
+并忽略高次幂，剩下：
+\[
+dy = \frac{1}{2} \frac{dx}{\sqrt{x}} = \frac{1}{2} x^{-\frac{1}{2}} · dx,
+\]
+并且 $\dfrac{dy}{dx} = \dfrac{1}{2} x^{-\frac{1}{2}}$。这与一般规则一致。
+
+
+<p><em>小结。</em> 看看我们已经走到了哪里。
+我们得到了下面这条规则：<a name="multipow"/> 要对 $x^n$ 求导，
+就乘以幂指数，并把幂指数减一，于是结果为 $nx^{n-1}$。
+
+<p>
+<a name="ex1"/>
+<hr><h3>习题 I</h3>
+
+<p>对下列函数求导：
+
+<p>(1) $y = x^{13}$
+<p>(2) $y = x^{-\frac{3}{2}}$
+<p>(3) $y = x^{2a}$
+<p>(4) $u = t^{2.4}$
+<p>(5) $z = \sqrt[3]{u}$
+<p>(6) $y = \sqrt[3]{x^{-5}}$
+<p>(7) $u = \sqrt[5]{\dfrac{1}{x^8}}$
+<p>(8) $y = 2x^a$
+<p>(9) $y = \sqrt[q]{x^3}$
+<p>(10) $y = \sqrt[n]{\dfrac{1}{x^m}}$
+
+
+<p><em>你现在已经学会怎样对 $x$ 的幂求导了。多容易啊！</em>
+
+<h3 class="answers">答案</h3>
+<p>(1)   $\dfrac{dy}{dx} = 13x^{12}$.
+<p>(2)   $\dfrac{dy}{dx} = - \dfrac{3}{2} x^{-\frac{5}{2}}$.
+<p>(3)   $\dfrac{dy}{dx} = 2ax^{(2a-1)}$.
+<p>(4)   $\dfrac{du}{dt} = 2.4t^{1.4}$.
+<p>(5)   $\dfrac{dz}{du} = \dfrac{1}{3} u^{-\frac{2}{3}}$.
+<p>(6)   $\dfrac{dy}{dx} = -\dfrac{5}{3}x^{-\frac{8}{3}}$.
+<p>(7)   $\dfrac{du}{dx} = -\dfrac{8}{5}x^{-\frac{13}{5}}$.
+<p>(8)   $\dfrac{dy}{dx} = 2ax^{a-1}$.
+<p>(9)   $\dfrac{dy}{dx} = \dfrac{3}{q} x^{\frac{3-q}{q}}$.
+<p>(10)   $\dfrac{dy}{dx} = -\dfrac{m}{n} x^{-\frac{m+n}{n}}$.
+<br>
+
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>涵盖本书所有习题。</li>
+    <li>检查你的解答，或在卡住时参考。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持这个网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="5.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

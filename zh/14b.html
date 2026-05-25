@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>(b)衰减曲线 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 14}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>(b)衰减曲线</h1>
+<p class="a rotatedFloralHeartBullet">
+
+
+<p>如果我们把 $p$ 取为真分数（小于 $1$），
+曲线显然会趋于向下沉，如 <a href="14b.html#figure42">图 42</a> 所示；
+其中每一个后继纵坐标都是前一个高度的 $\frac{3}{4}$。
+
+
+<a name="figure42">
+<p><img src="33283-t/images/168a.pdf.png-1.png">
+
+<p>方程仍然是
+\[
+y=bp^x;
+\] 但是因为 $p$ 小于 $1$，$\log_\epsilon p$ 将是一个负量，
+可以写作 $-a$；所以 $p=\epsilon^{-a}$，
+现在曲线方程就采取下面的形式：
+\[
+y=b\epsilon^{-ax}.
+\]
+
+<p>这个表达式的重要性在于，当自变量是<em>时间</em>时，
+这个方程表示许多物理过程的进程，在这些过程中某个东西会
+<em>逐渐消退</em>。例如，热物体的冷却过程可以用下面的方程表示
+（这就是 Newton 著名的“冷却定律”）：
+\[
+\theta_t=\theta_0 \epsilon^{-at};
+\]
+
+其中 $\theta_0$ 是热物体相对于周围环境的初始超温，
+$\theta_t$ 是时间 $t$ 结束时的超温，而 $a$ 是一个常数，
+也就是递减常数；它取决于物体暴露出的表面积，
+以及它的导热系数、辐射系数等等。
+
+<p>类似的公式
+\[
+Q_t=Q_0 \epsilon^{-at},
+\]
+用来表示一个带电体的电荷。它原来有电荷 $Q_0$，
+并以递减常数 $a$ 漏失；在这个情形中，
+这个常数取决于物体的电容量和漏电路径的电阻。
+
+<p>加在柔性弹簧上的振动，过一段时间后会消失；
+运动振幅的消退也可以用类似的方法表示。
+
+<p>事实上，对于所有“减少率与正在减少的量本身成正比”的现象，
+$\epsilon^{-at}$ 都充当一个<em>衰减因子</em>；或者用我们通常的符号说，
+就是在每一瞬间，$\dfrac{dy}{dt}$ 都与那一瞬间 $y$ 的值成正比。
+只要看看上面的曲线 <a href="14b.html#figure42">图 42</a>，
+就能看到在曲线的每一部分，斜率 $\dfrac{dy}{dx}$ 都与高度 $y$ 成正比；
+随着 $y$ 变小，曲线也变得更平。用符号写就是
+
+$y=b\epsilon^{-ax}$ 或
+\[
+\log_\epsilon y
+  = \log_\epsilon b - ax \log_\epsilon \epsilon
+  = \log_\epsilon b - ax,\\
+ \text{并且，求导得}\;
+\frac{1}{y}\, \frac{dy}{dx} = -a;\\
+ \text{因此}\;  \frac{dy}{dx} = b\epsilon^{-ax} × (-a) = -ay;
+\]
+换句话说，曲线的斜率向下，并与 $y$ 以及常数 $a$ 成正比。
+
+<p>如果把方程写成下面的形式，我们也会得到同样结果：
+\begin{align*}
+y &= bp^x; \\
+ \text{因为这时}\;
+\frac{dy}{dx}
+  &= bp^x × \log_\epsilon p. \\
+   \text{但}\;
+\log_\epsilon p &= -a; \\
+ \text{于是得到}\;
+\frac{dy}{dx} &= y × (-a) = -ay,
+\end{align*}
+与前面一样。
+
+<p><em>时间常数。</em> 在“衰减因子” $\epsilon^{-at}$ 的表达式中，
+量 $a$ 是另一个称为“<em>时间常数</em>”的量的倒数，
+我们可以用符号 $T$ 表示后者。那么衰减因子可写成
+$\epsilon^{-\frac{t}{T}}$；令 $t = T$ 可见，
+$T$ $\left(\text{或 } \dfrac{1}{a}\right)$ 的意义是：
+原始量（在前面的例子中叫 $\theta_0$ 或 $Q_0$）
+衰减到它原值的 $\dfrac{1}{\epsilon}$，也就是 $0.3678$，所需的时间长度。
+
+
+<p>物理学的不同分支经常需要 $\epsilon^x$ 和 $\epsilon^{-x}$ 的值，
+而很少有数学用表给出它们，所以这里列出若干数值以便使用。
+
+<p>
+
+<table>
+<tr>
+  <th>$x$</th>
+  <th>$\epsilon^x$</th>
+  <th>$\epsilon^{-x}$</th>
+  <th>$1-\epsilon^{-x}$</th>
+</tr>
+
+<tr><td>$0$</td><td>$1.0000$</td><td>$1.0000$</td><td>$0.0000$</td></tr>
+<tr><td>$0.10$</td><td>$1.1052$</td><td>$0.9048$</td><td>$0.0952$</td></tr>
+<tr><td>$0.20$</td><td>$1.2214$</td><td>$0.8187$</td><td>$0.1813$</td></tr>
+<tr><td>$0.50$</td><td>$1.6487$</td><td>$0.6065$</td><td>$0.3935$</td></tr>
+<tr><td>$0.75$</td><td>$2.1170$</td><td>$0.4724$</td><td>$0.5276$</td></tr>
+<tr><td>$0.90$</td><td>$2.4596$</td><td>$0.4066$</td><td>$0.5934$</td></tr>
+<tr><td>$1.00$</td><td>$2.7183$</td><td>$0.3679$</td><td>$0.6321$</td></tr>
+<tr><td>$1.10$</td><td>$3.0042$</td><td>$0.3329$</td><td>$0.6671$</td></tr>
+<tr><td>$1.20$</td><td>$3.3201$</td><td>$0.3012$</td><td>$0.6988$</td></tr>
+<tr><td>$1.25$</td><td>$3.4903$</td><td>$0.2865$</td><td>$0.7135$</td></tr>
+<tr><td>$1.50$</td><td>$4.4817$</td><td>$0.2231$</td><td>$0.7769$</td></tr>
+<tr><td>$1.75$</td><td>$5.755$</td><td>$0.1738$</td><td>$0.8262$</td></tr>
+<tr><td>$2.00$</td><td>$7.389$</td><td>$0.1353$</td><td>$0.8647$</td></tr>
+<tr><td>$2.50$</td><td>$12.182$</td><td>$0.0821$</td><td>$0.9179$</td></tr>
+<tr><td>$3.00$</td><td>$20.086$</td><td>$0.0498$</td><td>$0.9502$</td></tr>
+<tr><td>$3.50$</td><td>$33.115$</td><td>$0.0302$</td><td>$0.9698$</td></tr>
+<tr><td>$4.00$</td><td>$54.598$</td><td>$0.0183$</td><td>$0.9817$</td></tr>
+<tr><td>$4.50$</td><td>$90.017$</td><td>$0.0111$</td><td>$0.9889$</td></tr>
+<tr><td>$5.00$</td><td>$148.41$</td><td>$0.0067$</td><td>$0.9933$</td></tr>
+<tr><td>$5.50$</td><td>$244.69$</td><td>$0.0041$</td><td>$0.9959$</td></tr>
+<tr><td>$6.00$</td><td>$403.43$</td><td>$0.00248$</td><td>$0.99752$</td></tr>
+<tr><td>$7.50$</td><td>$1808.04$</td><td>$0.00055$</td><td>$0.99947$</td></tr>
+<tr><td>$10.00$</td><td>$22026.5$</td><td>$0.000045$</td><td>$0.999955$</td></tr>
+</table>
+
+<p>举一个使用这张表的例子：假设有一个热物体正在冷却，
+实验开始时（<em>即：</em>当 $t = 0$ 时）它比周围物体高 $72°$，
+并且它冷却的时间常数为 $20$ 分钟（也就是说，它的超温降到
+$72°$ 的 $\dfrac{1}{\epsilon}$ 倍需要 $20$ 分钟），
+那么我们就能计算在任意给定时间 $t$ 后它会降到多少。
+例如，令 $t$ 为 $60$ 分钟。于是 $\dfrac{t}{T} = 60 ÷ 20 = 3$，
+我们必须求 $\epsilon^{-3}$ 的值，然后用原来的 $72°$ 乘以它。
+表中给出 $\epsilon^{-3}$ 是 $0.0498$。所以在 $60$ 分钟结束时，
+超温会降到 $72° × 0.0498 = 3.586°$。
+
+<p><hr>
+
+<p><em>更多例子。</em>
+<p>(1) 在产生电流的电动势施加之后 $t$ 秒时，
+导体中的电流强度由下面的表达式给出：
+$C = \dfrac{E}{R}\left\{1 - \epsilon^{-\frac{Rt}{L}}\right\}$.
+
+<p>时间常数为 $\dfrac{L}{R}$。
+
+<p>若 $E = 10$，$R =1$，$L = 0.01$；那么当 $t$ 很大时，
+项 $\epsilon^{-\frac{Rt}{L}}$ 趋近于 $0$，且 $C = \dfrac{E}{R} = 10$；并且
+\[
+\frac{L}{R} = T = 0.01.
+\]
+
+<p>它在任意时刻的值可以写成：
+\[
+C = 10 - 10\epsilon^{-\frac{t}{0.01}},
+\]
+
+其时间常数为 $0.01$。这意味着变量项需要 $0.01$ 秒，
+才会降到它初值 $10\epsilon^{-\frac{0}{0.01}} = 10$ 的
+$\dfrac{1}{\epsilon} = 0.3678$ 倍。
+
+<p>要求 $t = 0.001 \text{秒}$ 时的电流值，
+比如说，$\dfrac{t}{T} = 0.1$，$\epsilon^{-0.1} = 0.9048$（由表得）。
+
+<p>由此可知，在 $0.001$ 秒后，变量项为 $0.9048 × 10 = 9.048$，
+实际电流为 $10 - 9.048 = 0.952$。
+
+<p>同样，在 $0.1$ 秒结束时，
+\[
+\frac{t}{T} = 10;\quad \epsilon^{-10} = 0.000045;
+\]
+变量项为 $10 × 0.000045 = 0.00045$，电流为 $9.9995$。
+
+<p>(2) 一束光穿过某种透明介质厚度 $l$ 厘米之后的强度 $I$
+为 $I = I_0\epsilon^{-Kl}$，其中 $I_0$ 是这束光的初始强度，
+$K$ 是“吸收常数”。
+
+<p>这个常数通常由实验求得。比如，如果发现一束光穿过某种透明介质
+$10$ 厘米后强度减少了 18%，这意味着
+$82 = 100 × \epsilon^{-K×10}$，或 $\epsilon^{-10K} = 0.82$；
+从表中可见 $10K = 0.20$ 非常接近；因此 $K = 0.02$。
+
+<p>要求使强度减半的厚度，就必须求满足等式
+$50 = 100 × \epsilon^{-0.02l}$，也就是 $0.5 = \epsilon^{-0.02l}$ 的 $l$ 值。
+
+把这个方程写成对数形式即可求得，即
+\[
+\log 0.5 = -0.02 × l × \log \epsilon,
+\]
+这给出
+\[
+
+l = \frac{-0.3010}{-0.02 × 0.4343}
+ = 34.7 \text{ 厘米，约}.
+\]
+
+<p>(3) 已知某种放射性物质中尚未发生转变的量 $Q$，
+与该物质的初始量 $Q_0$ 之间有关系
+$Q = Q_0 \epsilon^{-\lambda t}$，其中 $\lambda$ 是常数，
+$t$ 是从转变开始以来经过的秒数。
+
+<p>对于“镭 $A$”，如果时间用秒表示，
+实验表明 $\lambda = 3.85 × 10^{-3}$。求使一半物质发生转变所需的时间。
+（这个时间称为该物质的“平均寿命”。）
+
+<p>我们有 $0.5 = \epsilon^{-0.00385t}$。<a name="erratum0a"/>
+\begin{align*}
+\log 0.5 &= -0.00385t × \log \epsilon; \\
+ \text{且}\;
+t &= 3\text{ 分钟，约}.
+\end{align*}
+
+<p>
+<hr><h3>习题 XIII</h3>
+
+(1) 画出曲线 $y = b \epsilon^{-\frac{t}{T}}$；其中 $b = 12$，$T = 8$，
+并让 $t$ 取从 $0$ 到 $20$ 的若干不同值。
+
+<p>(2) 如果一个热物体冷却时，在 $24$ 分钟内其超温降为初始量的一半，
+推求时间常数，并求它冷却到原始超温的 $1$% 需要多久。
+
+
+<p>(3) 作曲线 $y = 100(1-\epsilon^{-2t})$。
+
+<p>(4) 下列方程给出非常相似的曲线：
+\begin{align*}
+\text{(i)}\   y &= \frac{ax}{x + b}; \\
+\text{(ii)}\  y &= a(1 - \epsilon^{-\frac{x}{b}}); \\
+\text{(iii)}\ y &= \frac{a}{90°} \arctan \left(\frac{x}{b}\right).
+\end{align*}
+
+<p>画出这三条曲线，取 $a= 100$ 毫米；
+$b = 30$ 毫米。
+
+<p>(5) 若
+\[
+(a) y = x^x;\quad
+(b) y = (\epsilon^x)^x;\quad
+(c) y = \epsilon^{x^x}.
+\]
+求 $y$ 关于 $x$ 的导数。
+
+<p>(6) 对于“钍 $A$”，$\lambda$ 的值为 $5$；
+求“平均寿命”，也就是在表达式
+\[
+Q = Q_0 \epsilon^{-\lambda t};
+\]
+中，“钍 $A$” 的量 $Q$ 转变到等于初始量 $Q_0$ 一半所需的时间；
+$t$ 以秒为单位。
+
+<p>(7) 一个电容为 $K = 4 × 10^{-6}$ 的电容器，
+充到电势 $V_0 = 20$ 后，正通过 $10,000$ 欧姆的电阻放电。
+假设电势下降遵循规律 $V = V_0 \epsilon^{-\frac{t}{KR}}$，
+求（<em>a</em>）$0.1$ 秒后；（<em>b</em>）$0.01$ 秒后的电势 $V$。
+
+<p>(8) 一个带电绝缘金属球的电荷 $Q$ 在 $10$ 分钟内从 $20$ 单位降到 $16$ 单位。
+若 $Q = Q_0 × \epsilon^{-\mu t}$，其中 $Q_0$ 为初始电荷，
+$t$ 以秒为单位，求漏电系数 $\mu$。并由此求一半电荷漏失所需的时间。
+
+
+<p>(9) 电话线路上的衰减可由关系式 $i = i_0 \epsilon^{-\beta l}$ 确定；
+其中 $i$ 是线路长度为 $l$ 处的电话电流强度，初始强度为 $i_0$，
+$l$ 是线路长度（千米），$\beta$ 是常数。
+对于 1910 年铺设的英法海底电缆，$\beta = 0.0114$。
+求电缆末端（$40$ 千米处）的衰减，以及沿电缆多长处
+$i$ 仍为原始电流的 $8$%（非常清晰听音的极限值）。
+
+<p>(10) 高度为 $h$ 千米处的大气压 $p$ 由
+$p=p_0 \epsilon^{-kh}$ 给出；$p_0$ 是海平面气压（$760$ 毫米）。
+
+<p>在 $10$、$20$ 和 $50$ 千米处，气压分别为
+$199.2$、$42.2$、$0.32$，求各情形下的 $k$。
+使用 $k$ 的平均值，求各情形下的百分误差。
+
+<p>(11) 求 $y = x^x$ 的极小值或极大值。
+
+<p>(12) 求 $y = x^{\frac{1}{x}}$ 的极小值或极大值。
+
+<p>(13) 求 $y = xa^{\frac{1}{x}}$ 的极小值或极大值。
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)   令 $\dfrac{t}{T} = x$（$\therefore t = 8x$），并使用上表。
+
+<p>(2)   $T = 34.627$；$159.46$ 分钟。
+
+<p>(3)   取 $2t = x$；并使用上表。
+
+<p>(5)   (<em>a</em> ) $x^x \left(1 + \log_\epsilon x\right)$;&nbsp;&nbsp;
+(<em>b</em> ) $2x(\epsilon^x)^x$;&nbsp;&nbsp;
+(<em>c</em> ) $\epsilon^{x^x} × x^x \left(1 + \log_\epsilon x\right)$.
+
+
+<p>(6)   $0.14$ 秒。
+
+<p>(7)   (<em>a</em> ) $1.642$;&nbsp;&nbsp; (<em>b</em> ) $15.58$.
+
+
+<p>(8)   $\mu = 0.00037$, $31^m \frac{1}{4}$.
+
+<p>(9)   $i$ 为 $i_0$ 的 $63.4$%，$220$ 千米。
+
+<p>(10)   $0.133$、$0.145$、$0.155$，平均值 $0.144$；$-10.2$%、$-0.9$%、$+77.2$%。
+
+
+<p>(11)   当 $x = \dfrac{1}{\epsilon}$ 时为极小值。
+
+<p>(12)   当 $x = \epsilon$ 时为极大值。
+
+
+<p>(13)   当 $x = \log_\epsilon a$ 时为极小值。
+<br>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>覆盖本书所有习题。</li>
+    <li>检查你的解答，或在卡住时获得帮助。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持本网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="15.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>曲线的曲率 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 12}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>曲线的曲率</h1>
+<p class="a rotatedFloralHeartBullet">
+
+
+<p>回到逐次求导这个过程，可能会有人问：为什么要对一个东西求两次导？
+我们知道，当变量是空间和时间时，求两次导可以得到运动物体的加速度；
+而在应用于曲线的几何解释中，$\dfrac{dy}{dx}$ 表示曲线的<em>斜率</em>。
+但是在这种情形下，$\dfrac{d^2 y}{dx^2}$ 又表示什么呢？显然，它表示斜率变化的速率
+（按单位长度 $x$ 计）；简言之，它是<em>曲线弯曲程度的一种量度</em>。
+
+<a name="figure31">
+<p><img src="33283-t/images/124a.pdf.png-1.png">
+<a name="figure32">
+<p><img src="33283-t/images/124b.pdf.png-1.png">
+
+<p>假设斜率为常数，如 <a href="12.html#figure31">图 31</a> 所示。
+
+<p>这里，$\dfrac{dy}{dx}$ 是常数。
+
+
+<p>不过，假设有一种情形像 <a href="12.html#figure32">图 32</a> 那样，斜率本身向上变大，
+那么 $\dfrac{d\left(\dfrac{dy}{dx}\right)}{dx}$，也就是
+$\dfrac{d^2y}{dx^2}$，将为<em>正</em>。
+
+<p>如果随着你向右走，斜率变小（如 <a href="10.html#figure14">图 14</a>），
+或如 <a href="12.html#figure33">图 33</a>，那么即使曲线仍在向上走，
+由于这种变化是在减小它的斜率，它的 $\dfrac{d^2y}{dx^2}$ 也会是<em>负</em>。
+
+<a name="figure3">
+<p><img src="33283-t/images/125a.pdf.png-1.png">
+
+<p>现在该让你知道另一个秘密了：怎样判断你通过“令其等于零”得到的结果是极大值还是极小值。
+诀窍是这样的：求导之后（得到要令为零的那个表达式），再求一次导，
+看看第二次求导的结果是<em>正</em>还是<em>负</em>。如果 $\dfrac{d^2y}{dx^2}$
+算出来是<em>正</em>，就知道你得到的 $y$ 值是<em>极小值</em>；但如果
+$\dfrac{d^2y}{dx^2}$ 算出来是<em>负</em>，那么你得到的 $y$ 值必定是<em>极大值</em>。
+规则就是这样。
+
+<a name="figure34">
+<p><img src="33283-t/images/126a.pdf.png-1.png">
+<a name="figure35">
+<p><img src="33283-t/images/126b.pdf.png-1.png">
+
+<p>原因应当相当明显。想想任何一条有极小点的曲线（比如 <a href="10.html#figure15">图 15</a>），
+或像 <a href="12.html#figure34">图 34</a> 这样，$y$ 的极小点标为 $M$，曲线向上<em>凹</em>。
+在 $M$ 的左边，斜率向下，也就是负的，并且越来越不负。在 $M$ 的右边，
+斜率已经变成向上，而且越来越向上。显然，当曲线穿过 $M$ 时，斜率的变化使
+$\dfrac{d^2y}{dx^2}$ 为<em>正</em>；因为随着 $x$ 向右增加，它的作用就是把向下的斜率变成向上的斜率。
+
+<p>同样，考虑任何一条有极大点的曲线（比如 <a href="10.html#figure16">图 16</a>），
+或像 <a href="12.html#figure35">图 35</a> 这样，曲线<em>上凸（向下凹）</em>，并且极大点标为 $M$。
+在这种情形下，当曲线从左到右经过 $M$ 时，它的向上斜率变成向下斜率或负斜率；
+所以此时“斜率的斜率” $\dfrac{d^2y}{dx^2}$ 为<em>负</em>。
+
+<p>现在回到上一章的例子，用这种方法验证在各个具体情形下到底是极大值还是极小值。
+下面有几个算好的例子。
+
+<p><hr>
+
+<p>(1) 求下列函数的极大值或极小值：
+\begin{align*}
+\text{(a)}\quad y &= 4x^2-9x-6; \qquad \text{(b)}\quad y = 6 + 9x-4x^2; \\
+\end{align*}
+
+并判断每种情形下它是极大值还是极小值。
+
+\begin{align*}
+\text{(a)}\quad \dfrac{dy}{dx}
+  &= 8x-9=0;\quad x=1\tfrac{1}{8},\quad \text{且 } y = -11.065.\\
+
+\dfrac{d^2y}{dx^2}
+  &= 8;\quad \text{它为正；因此这是极小值。} \\
+
+\text{(b)}\quad {\dfrac{dy}{dx}}
+  &= 9-8x=0;\quad x = 1\tfrac{1}{8};\quad \text{且 } y = +11.065.\\
+
+\dfrac{d^2y}{dx^2}
+  &= -8;\quad \text{它为负；因此这是极大值。}
+\end{align*}
+
+<p>(2) 求函数
+$y = x^3-3x+16$.
+\begin{align*}
+\dfrac{dy}{dx}
+  &= 3x^2 - 3 = 0;\quad x^2 = 1;\quad \text{且 } x = ±1.\\
+
+\dfrac{d^2y}{dx^2}
+  &= 6x;\quad \text{当 } x = 1 \text{ 时，它为正};
+\end{align*}
+因此 $x=1$ 对应极小值 $y=14$。当 $x=-1$ 时它为 $-$；
+因此 $x=-1$ 对应极大值 $y=+18$。
+
+
+<p>(3) 求 $y=\dfrac{x-1}{x^2+2}$ 的极大值和极小值。
+\[
+\frac{dy}{dx} = \frac{(x^2+2) × 1 - (x-1) × 2x}{(x^2+2)^2}
+  = \frac{2x - x^2 + 2}{(x^2 + 2)^2} = 0;
+\]
+或 $x^2 - 2x - 2 = 0$，其解为 $x =+2.73$ 和 $x=-0.73$。
+\begin{align*}
+\dfrac{d^2y}{dx^2}
+  &= - \frac{(x^2 + 2)^2 × (2x-2) - (x^2 - 2x - 2)(4x^3 + 8x)}{(x^2 + 2)^4} \\
+  &= - \frac{2x^5 - 6x^4 - 8x^3 - 8x^2 - 24x + 8}{(x^2 + 2)^4}.
+\end{align*}
+
+<p>分母总是正的，所以只需确定分子的符号。
+
+<p>如果取 $x = 2.73$，分子为负；这是极大值，$y = 0.183$。
+
+<p>如果取 $x=-0.73$，分子为正；这是极小值，$y=-0.683$。
+
+<p>(4) 某工厂处理产品的费用 $C$ 随每周产量 $P$ 变化，其关系为
+$C = aP + \dfrac{b}{c+P} + d$，其中 $a$, $b$, $c$, $d$ 都是正的常数。
+在什么产量下费用最小？
+\[
+\dfrac{dC}{dP} = a - \frac{b}{(c+P)^2} = 0\quad \text{作为极大值或极小值的条件；}
+\]
+因此 $a = \dfrac{b}{(c+P)^2}$，且 $P = ±\sqrt{\dfrac{b}{a}} - c$。
+
+<p>由于产量不能为负，$P=+\sqrt{\dfrac{b}{a}} - c$。
+
+\begin{align*}
+   \text{现在}\quad
+\frac{d^2C}{dP^2} &= + \frac{b(2c + 2P)}{(c + P)^4},
+\end{align*}
+它对所有 $P$ 的值都为正；因此 $P = +\sqrt{\dfrac{b}{a}} - c$ 对应极小值。
+
+<p>(5) 用 $N$ 盏某种灯照亮一栋建筑，每小时总成本 $C$ 为
+\[
+C = N\left(\frac{C_l}{t} + \frac{EPC_e}{1000}\right),
+\]
+其中 $E$ 是商业效率（每烛光所需瓦数），
+
+$P$ 是每盏灯的烛光强度，<br>
+$t$ 是每盏灯的平均寿命，单位为小时，<br>
+$C_l =$ 每使用一小时的更换成本，以便士计，<br>
+$C_e =$ 每 $1000$ 瓦小时的电能成本。<br>
+
+<p>此外，灯的平均寿命与其运行时的商业效率之间大约有关系 $t = mE^n$，
+其中 $m$ 和 $n$ 是取决于灯的种类的常数。
+
+<p>求使照明总成本最小的商业效率。
+
+\begin{align*}
+\text{有}\;
+C &= N\left(\frac{C_l}{m} E^{-n} + \frac{PC_e}{1000} E\right), \\
+\dfrac{dC}{dE}
+  &= \frac{PC_e}{1000} - \frac{nC_l}{m} E^{-(n+1)} = 0
+\end{align*}
+作为极大值或极小值的条件。
+\[
+E^{n+1} = \frac{1000 × nC_l}{mPC_e}\quad \text{且}\quad
+E = \sqrt[n+1]{\frac{1000 × nC_l}{mPC_e}}.
+\]
+
+
+<p>这显然是极小值，因为
+\[
+\frac{d^2C}{dE^2} = (n + 1) \frac{nC_l}{m} E^{-(n+2)},
+\]
+当 $E$ 为正时，它是正的。
+
+<p>对于某种 $16$ 烛光的灯，$C_l= 17$ 便士，$C_e=5$ 便士；
+并且发现 $m=10$, $n=3.6$。
+\[
+E = \sqrt[4.6]{\frac{1000 × 3.6 × 17}{10 × 16 × 5}}
+  = 2.6\text{ 瓦/烛光}.
+\]
+
+<p>
+<hr><h3>习题 X</h3>（建议你把任何数值例子的图像画出来。）
+
+(1) 求下列函数的极大值和极小值：
+\[
+y = x^3 + x^2 - 10x + 8.
+\]
+
+<p>(2) 已知 $y = \dfrac{b}{a}x - cx^2$，求 $\dfrac{dy}{dx}$ 和
+$\dfrac{d^2y}{dx^2}$ 的表达式；还要求出使 $y$ 取极大值或极小值的 $x$ 值，
+并说明它是极大值还是极小值。
+
+<p>(3) 求方程为
+\[
+y = 1 - \frac{x^2}{2} + \frac{x^4}{24};
+\]
+的曲线有多少个极大值、多少个极小值；再求方程为
+\[
+y = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^6}{720}.
+\]
+
+的曲线有多少个。
+
+<p>(4) 求下列函数的极大值和极小值：
+\[
+y=2x+1+\frac{5}{x^2}.
+\]
+
+<p>(5) 求下列函数的极大值和极小值：
+\[
+y=\frac{3}{x^2+x+1}.
+\]
+
+<p>(6) 求下列函数的极大值和极小值：
+\[
+y=\frac{5x}{2+x^2}.
+\]
+
+<p>(7) 求下列函数的极大值和极小值：
+\[
+y=\frac{3x}{x^2-3} + \frac{x}{2} + 5.
+\]
+
+<p>(8) 把一个数 $N$ 分成两部分，使其中一部分平方的三倍加上另一部分平方的两倍为最小。
+
+<p>(9) 一台发电机在不同输出 $x$ 下的效率 $u$ 由一般方程表示：
+\[
+u=\frac{x}{a+bx+cx^2};
+\]
+其中 $a$ 是一个常数，主要取决于铁中的能量损耗；$c$ 是一个常数，主要取决于铜部件的电阻。
+求使效率最大的输出值表达式。
+
+
+<p>(10) 设已知某艘汽船的耗煤量可用公式 $y = 0.3 + 0.001v^3$ 表示；
+其中 $y$ 是每小时燃烧的煤吨数，$v$ 是速度，单位为海里每小时。该船的工资、资本利息和折旧成本合计起来，
+每小时等于 $1$ 吨煤的成本。什么速度会使 $1000$ 海里航程的总成本最小？
+如果煤价为每吨 $10$ 先令，那么这次航程的最小成本是多少？
+
+<p>(11) 求下列函数的极大值和极小值：<a name="ex10"/>
+\[
+y = ±\frac{x}{6}\sqrt{x(10-x)}.
+\]
+
+<p>(12) 求下列函数的极大值和极小值：
+\[
+y= 4x^3 - x^2 - 2x + 1.
+\]
+
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)   极大值：$x = -2.19$, $y = 24.19$；极小值：$x = 1.52$, $y = -1.38$。
+
+<p>(2)   $\dfrac{dy}{dx} = \dfrac{b}{a} - 2cx$；$\dfrac{d^2 y}{dx^2} = -2c$；
+$x = \dfrac{b}{2ac}$（<em>极大值</em>）。
+
+<p>(3)   (<em>a</em> ) 一个极大值和两个极小值。
+(<em>b</em> ) 一个极大值。（$x = 0$；其他点非实数。）
+
+<p>(4)   极小值：$x = 1.71$, $y = 6.14$。
+
+<p>(5)   极大值：$x = -.5$, $y = 4$。
+
+<p>(6)   极大值：$x = 1.414$, $y = 1.7675$。
+极小值：$x = -1.414$, $y = 1.7675$。
+
+<p>(7)   极大值：$x = -3.565$, $y = 2.12$。
+极小值：$x = +3.565$, $y = 7.88$。
+
+<p>(8)   $0.4N$, $0.6N$.
+
+<p>(9)   $x = \sqrt{\dfrac{a}{c}}$.
+
+<p>(10)   速度为每小时 $8.66$ 海里。所需时间 $115.47$ 小时。
+最小成本 £$112$. $12$<em>s</em>。
+
+<p>(11)   当 $x = 7.5$, $y = ±5.414$ 时有极大值和极小值。（见<a href="9.html#Example10">这里</a>的例 10。）
+
+<p>(12)   极小值：$x = \frac{1}{2}$, $y= 0.25$；极大值：$x = - \frac{1}{3}$, $y= 1.408$。
+
+<br>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>涵盖本书所有习题。</li>
+    <li>检查你的答案，或在卡住时获得帮助。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持这个网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="13.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

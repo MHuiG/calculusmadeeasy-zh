@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>求导的几何意义 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 10}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>求导的几何意义</h1>
+<p class="a rotatedFloralHeartBullet">
+
+
+<p>想一想导数有什么几何意义，是很有用的。
+
+<p>首先，任何 $x$ 的函数，比如 $x^2$、$\sqrt{x}$ 或 $ax+b$，
+都可以画成一条曲线；如今每个学生都熟悉画曲线这件事。
+
+<p><a name="figure7">
+<img src="33283-t/images/088a.pdf.png-1.png">
+
+<p>设 <a href="10.html#figure7">图 7</a> 中的 $PQR$ 是一条曲线的一段，这条曲线是相对于坐标轴
+$OX$ 和 $OY$ 画出的。取曲线上的任意一点 $Q$，它的横坐标是 $x$，
+纵坐标是 $y$。现在观察当 $x$ 变化时 $y$ 怎样变化。如果让 $x$
+向右增加一个小增量 $dx$，就会看到 $y$ 也在<em>这条</em>特定曲线上增加一个小增量
+$dy$（因为这条曲线恰好是一条<em>上升</em>曲线）。于是，$dy$ 与 $dx$
+的比值就是曲线在 $Q$ 与 $T$ 两点之间向上倾斜程度的量度。事实上，从图上可以看出，
+$Q$ 与 $T$ 之间的曲线有许多不同的斜率，所以我们很难笼统地说<a name="slope"/>曲线在
+$Q$ 与 $T$ 之间的斜率。不过，如果 $Q$ 和 $T$ 足够接近，以至于曲线的小段
+$QT$ 实际上可以看成直线，那么就可以说比值 $\dfrac{dy}{dx}$ 是曲线沿 $QT$
+的斜率。把直线 $QT$ 向两边延长，它只沿着 $QT$ 这一段接触曲线；如果这一段无限小，
+这条直线实际上就只在一个点接触曲线，因此就是曲线的<em>切线</em>。
+
+<p>这条曲线的切线显然与 $QT$ 有相同的斜率，所以 $\dfrac{dy}{dx}$ 就是在求出该值的点
+$Q$ 处，曲线切线的斜率。
+
+<p>我们已经看到，“曲线的斜率”这个简短说法并没有精确意义，因为一条曲线有许多斜率；
+事实上，曲线的每一小段都有不同的斜率。不过，“曲线<em>在一点处</em>的斜率”却是完全确定的：
+它就是正位于那一点附近的一小段曲线的斜率；而我们已经看到，这和“曲线在那一点处的切线斜率”是同一回事。
+
+<p>注意，$dx$ 是向右迈出的一小步，$dy$ 是相应向上的一小步。这些步长必须看作尽可能短，
+实际上是无限短；不过在图中我们必须把它们画成并非无穷小的一小段，否则就看不见了。
+
+<p><em>以后我们会大量用到这一事实：$\dfrac{dy}{dx}$ 表示曲线在任意一点处的斜率。</em>
+
+<p><a name="figure8">
+<img src="33283-t/images/090a.pdf.png-1.png">
+
+<p>如果一条曲线在某一点以 $45°$ 向上倾斜，如 <a href="10.html#figure8">图 8</a> 所示，
+$dy$ 和 $dx$ 就相等，$\dfrac{dy}{dx} = 1$。
+
+
+<p>如果曲线向上倾斜得比 $45°$ 更陡（<a href="10.html#figure9">图 9</a>），
+$\dfrac{dy}{dx}$ 就大于 $1$。
+
+<p><a name="figure9">
+<img src="33283-t/images/091a.pdf.png-1.png">
+
+
+<p>如果曲线向上倾斜得很缓，如 <a href="10.html#figure10">图 10</a>，
+$\dfrac{dy}{dx}$ 就是一个小于 $1$ 的分数。
+
+<p><a name="figure10">
+<img src="33283-t/images/091b.pdf.png-1.png">
+
+<p>对于水平直线，或曲线中的水平位置，$dy=0$，因此 $\dfrac{dy}{dx}=0$。
+
+<a name="figure11">
+<img src="33283-t/images/091c.pdf.png-1.png">
+
+<p>如果曲线<em>向下</em>倾斜，如 <a href="10.html#figure11">图 11</a>，$dy$ 就是向下的一步，
+因此必须算作负值；于是 $\dfrac{dy}{dx}$ 也带负号。
+
+<p>如果这条“曲线”碰巧是一条直线，比如 <a href="10.html#figure12">图 12</a> 中那样，
+$\dfrac{dy}{dx}$ 的值在它的所有点上都相同。换句话说，它的<em>斜率</em>是常数。
+
+<p><a name="figure12">
+<img src="33283-t/images/092a.pdf.png-1.png">
+
+<p>如果一条曲线越向右走越向上弯，随着陡峭程度增加，$\dfrac{dy}{dx}$ 的值也会越来越大，
+如 <a href="10.html#figure13">图 13</a> 所示。
+
+<p><a name="figure13">
+<img src="33283-t/images/092b.pdf.png-1.png">
+
+<p>如果一条曲线<a name="curve"/>越走越平，那么到达较平的部分时，$\dfrac{dy}{dx}$
+的值就会越来越小，如 <a href="10.html#figure14">图 14</a> 所示。
+
+<p><a name="figure14">
+<img src="33283-t/images/093a.pdf.png-1.png">
+<p><a name="figure15">
+<img src="33283-t/images/093b.pdf.png-1.png">
+
+<p>如果一条曲线先下降，然后又上升，如 <a href="10.html#figure15">图 15</a> 所示，呈现向上的凹形，
+那么显然 $\dfrac{dy}{dx}$ 起初为负；随着曲线变平，它的绝对值逐渐减小，并在曲线谷底时变为零；
+从这一点以后，$\dfrac{dy}{dx}$ 又取得正值，并且继续增大。在这种情形下，我们说 $y$
+经过一个<em>极小值</em>。$y$ 的极小值不一定是 $y$ 的最小值；它只是与谷底对应的那个 $y$ 值。
+例如，在 <a href="11.html#figure28">图 28</a> 中，与谷底对应的 $y$ 值是 $1$，
+而 $y$ 在别处还会取到比这更小的值。极小值的特征是：在它的<em>两侧</em>，$y$ 都必须增加。
+
+
+<p><em>注意</em>——对于使 $y$ 取<em>极小值</em>的那个特定 $x$ 值，有 $\dfrac{dy}{dx} = 0$。
+
+<p>如果一条曲线先上升再下降，那么 $\dfrac{dy}{dx}$ 的值起初为正；到达峰顶时为零；
+随着曲线向下倾斜又变为负，如 <a href="10.html#figure16">图 16</a> 所示。在这种情形下，我们说 $y$
+经过一个<em>极大值</em>，但 $y$ 的极大值不一定是 $y$ 的最大值。在 <a href="11.html#figure28">图 28</a> 中，
+$y$ 的极大值是 $2\frac{1}{3}$，但这绝不是 $y$ 在曲线其他点上所能取得的最大值。
+
+<a name="figure16">
+<img src="33283-t/images/094a.pdf.png-1.png">
+<a name="figure17">
+<img src="33283-t/images/094b.pdf.png-1.png">
+
+<p><em>注意</em>——对于使 $y$ 取<em>极大值</em>的那个特定 $x$ 值，有 $\dfrac{dy}{dx}= 0$。
+
+<p>如果曲线具有 <a href="10.html#figure17">图 17</a> 那样的奇特形状，$\dfrac{dy}{dx}$
+的值将始终为正；但会有一个特别的位置，曲线的斜率最不陡，此处 $\dfrac{dy}{dx}$
+的值为极小值；也就是说，它比曲线上任何其他部分的值都小。
+
+
+<p>如果曲线具有 <a href="10.html#figure18">图 18</a> 的形状，$\dfrac{dy}{dx}$
+在上半部分为负，在下半部分为正；而在曲线的尖端处，它实际上变成垂直，
+此时 $\dfrac{dy}{dx}$ 的值将无限大。
+
+<a name="figure8">
+<img src="33283-t/images/095a.pdf.png-1.png">
+
+<p>既然我们已经明白 $\dfrac{dy}{dx}$ 衡量曲线在任意一点处的陡峭程度，
+就来看看一些我们已经学会求导的方程。
+
+<p>(1) 先看最简单的情形：
+\[
+y=x+b.
+\]
+
+<a name="figure19">
+<img src="33283-t/images/096a.pdf.png-1.png">
+<a name="figure20">
+<img src="33283-t/images/096b.pdf.png-1.png">
+
+<p>它按 $x$ 和 $y$ 的相同标度画在 <a href="10.html#figure19">图 19</a> 中。如果令 $x = 0$，
+对应的纵坐标就是 $y = b$；也就是说，这条“曲线”在高度 $b$ 处穿过 $y$ 轴。
+从这里开始，它以 $45°$ 向上升；无论我们把 $x$ 向右取多大，$y$ 都同样向上增加。
+这条直线的斜率是 $1$ 比 $1$。
+
+<p>现在按我们已经学过的规则（见<a href="4.html#diffrule1">这里</a>和<a href="5.html#diffrule2">这里</a>）对 $y = x+b$ 求导，
+得到 $\dfrac{dy}{dx} = 1$。
+
+<p>这条直线的斜率意思是：每向右走一小步 $dx$，就向上走同样一小步 $dy$。
+并且这个斜率是常数——永远是同一个斜率。
+
+<p>(2) 再看另一个情形：<a name="Case2"/>
+\[
+y = ax+b.
+\]
+我们知道，这条曲线像前一条一样，会从 $y$ 轴上的高度 $b$ 处开始。不过在画曲线之前，
+先通过求导来求它的斜率；得到 $\dfrac{dy}{dx} = a$。斜率将是常数，
+对应某个角度，而这个角度的正切在这里叫做 $a$。给 $a$ 指定一个数值，比如 $\frac{1}{3}$。
+那么就必须让它具有这样的斜率：每横向走 $3$，向上升 $1$；或者说 $dx$ 是 $dy$ 的
+$3$ 倍；如 <a href="10.html#figure21">图 21</a> 放大所示。因此，在 <a href="10.html#figure20">图 20</a> 中按这个斜率画出直线。
+<p>
+<a name="figure21">
+<p><img src="33283-t/images/097a.pdf.png-1.png">
+<p>
+(3) 现在来看一个稍难一点的情形。
+\begin{align*}
+   \text{令}\;
+y= ax^2 + b.
+\end{align*}
+
+<p>同样，这条曲线会从 $y$ 轴上高于原点 $b$ 的地方开始。
+
+<p>现在求导。[如果你忘了，可以翻回<a href="5.html#diffrule2">这里</a>；或者，更好的是，<em>别</em>翻回去，
+自己把求导想出来。]
+\[
+\frac{dy}{dx} = 2ax.
+\]
+
+<a name="figure22">
+<img src="33283-t/images/097b.pdf.png-1.png">
+
+<p>这表明陡峭程度不是常数：它会随着 $x$ 的增加而增加。在起点 $P$，
+也就是 $x = 0$ 的地方，曲线（<a href="10.html#figure22">图 22</a>）没有陡峭程度——也就是说，它是水平的。
+在原点左侧，$x$ 取负值的地方，$\dfrac{dy}{dx}$ 也取负值，也就是从左向右下降，如图所示。
+
+<p>我们用一个具体例子来说明。取方程
+\[
+y = \tfrac{1}{4}x^2 + 3,
+\]
+对它求导，得到
+\[
+\dfrac{dy}{dx} = \tfrac{1}{2}x.
+\]
+现在给 $x$ 指定几个连续的值，比如从 $0$ 到 $5$；用第一个方程算出对应的 $y$ 值，
+再用第二个方程算出对应的 $\dfrac{dy}{dx}$。把结果列成表：
+
+
+<table>
+<tr><td>$x$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td></tr>
+<tr><td>$y$</td><td>$3$</td><td>$3\frac{1}{4}$</td><td>$4$</td><td>$5\frac{1}{4}$</td><td>$7$</td><td>$9\frac{1}{4}$</td></tr>
+<tr><td>$d$</td><td>$0$</td><td>$\frac{1}{2}$</td><td>$1$</td><td>$1\frac{1}{2}$</td><td>$2$</td><td>$2\frac{1}{2}$</td></tr>
+</table>
+
+然后把它们画成两条曲线：在 <a href="10.html#figure23">图 23</a> 中把 $y$ 对 $x$ 的值画出，
+在 <a href="10.html#figure24">图 24</a> 中把 $\dfrac{dy}{dx}$ 对 $x$ 的值画出。对于任意指定的 $x$ 值，
+第二条曲线中纵坐标的<em>高度</em>，与第一条曲线的<em>斜率</em>成正比。
+
+<a name="figure23">
+<img src="33283-t/images/099a.pdf.png-1.png">
+<a name="figure24">
+<img src="33283-t/images/099b.pdf.png-1.png">
+
+<p>如果曲线出现一个突然的尖点，如 <a href="10.html#figure25">图 25</a>，
+那么该点处的斜率会突然从向上斜率变成向下斜率。在这种情形下，
+$\dfrac{dy}{dx}$ 显然会从正值突然变为负值。
+
+<a name="figure25">
+<img src="33283-t/images/099c.pdf.png-1.png">
+
+
+<p>下面的例子展示刚才所讲原理的更多应用。
+
+<p>(4) 求曲线
+\[
+y = \frac{1}{2x} + 3,
+\]
+在 $x = -1$ 这一点处切线的斜率。求这条切线与曲线 $y = 2x^2 + 2$ 所成的角。
+
+<p>切线的斜率就是曲线在它们相接的点处的斜率（见<a href="10.html#slope">这里</a>）；
+也就是说，它就是曲线在该点处的 $\dfrac{dy}{dx}$。这里
+$\dfrac{dy}{dx} = -\dfrac{1}{2x^2}$，当 $x = -1$ 时，$\dfrac{dy}{dx} = -\dfrac{1}{2}$，
+这就是该点处切线和曲线的斜率。切线是一条直线，方程可写为 $y = ax + b$，
+它的斜率是 $\dfrac{dy}{dx} = a$，因此 $a = -\dfrac{1}{2}$。又因为当
+$x= -1$ 时，$y = \dfrac{1}{2(-1)} + 3 = 2\frac{1}{2}$；切线经过这一点，
+所以该点的坐标必须满足切线方程，即
+\[
+  y = -\dfrac{1}{2} x + b,
+\]
+所以 $2\frac{1}{2} = -\dfrac{1}{2} × (-1) + b$，从而 $b = 2$；因此切线方程是
+$y = -\dfrac{1}{2} x + 2$。
+
+<p>现在，当两条曲线相交时，交点是两条曲线共有的点，它的坐标必须同时满足这两条曲线各自的方程；
+也就是说，它必须是由这两条曲线方程联立而成的方程组的解。这里，两条曲线相交的点由下面的解给出：
+
+\begin{aligned}
+  y &= 2x^2 + 2, \\
+  y &= -\tfrac{1}{2} x + 2 \quad\text{或}\quad  2x^2 + 2 = -\tfrac{1}{2} x + 2;
+\end{aligned}
+
+也就是
+\[
+x(2x + \tfrac{1}{2}) = 0.
+\]
+
+<p>这个方程的解是 $x = 0$ 和 $x = -\tfrac{1}{4}$。曲线 $y = 2x^2 + 2$ 在任意点处的斜率是
+\[
+\dfrac{dy}{dx} = 4x.
+\]
+
+<p>对于 $x = 0$ 的点，这个斜率为零；曲线是水平的。对于
+\[
+x = -\dfrac{1}{4},\quad \dfrac{dy}{dx} = -1;
+\]
+因此曲线在该点向右下方倾斜，与水平线成角 $\theta$，并且 $\tan \theta = 1$；
+也就是与水平线成 $45°$。
+
+<p>这条直线的斜率是 $-\tfrac{1}{2}$；也就是说，它向右下方倾斜，与水平线成角
+$\phi$，满足 $\tan \phi = \tfrac{1}{2}$；也就是 $26° 34'$。由此可知，
+在第一个点处，曲线与这条直线相交成 $26° 34'$ 的角；而在第二个点处，
+相交成 $45° - 26° 34' = 18° 26'$ 的角。
+
+<p>(5) 要过坐标为 $x = 2$, $y = -1$ 的点作一条直线，使它成为曲线
+$y = x^2 - 5x + 6$ 的切线。求切点的坐标。
+
+
+<p>切线的斜率必须与曲线的 $\dfrac{dy}{dx}$ 相同；也就是 $2x - 5$。
+
+<p>直线方程是 $y = ax + b$，并且当 $x = 2$, $y = -1$ 时它成立，
+所以 $-1 = a×2 + b$；此外，它的 $\dfrac{dy}{dx} = a = 2x - 5$。
+
+<p>切点的 $x$ 和 $y$ 还必须同时满足切线方程和曲线方程。
+
+<p>于是我们有
+\begin{aligned}
+   y &= x^2 - 5x + 6, \,\,\,\,\,(i)  \\
+\end{aligned}
+\begin{aligned}
+  y &= ax + b,        \,\,\,\,\,(ii)   \\
+\end{aligned}
+\begin{aligned}
+  -1 &= 2a + b,      \,\,\,\,\,(iii)  \\
+\end{aligned}
+\begin{aligned}
+  a &= 2x - 5,         \,\,\,\,\,(iv)
+\end{aligned}
+
+
+这是关于 $a$, $b$, $x$, $y$ 的四个方程。
+
+<p>由方程 (i) 和 (ii) 得 $x^2 - 5x + 6 = ax+b$。
+
+<p>把 $a$ 和 $b$ 的值代入其中，得到
+\[
+  x^2 - 5x + 6 = (2x - 5)x - 1 - 2(2x - 5),
+\]
+它可化简为 $x^2 - 4x + 3 = 0$，解为 $x = 3$ 和 $x = 1$。代入 (i)，
+分别得到 $y = 0$ 和 $y = 2$；所以两个切点是 $x = 1$, $y = 2$ 和
+$x = 3$, $y = 0$。
+
+<p><em>注意。</em>——在所有涉及曲线的习题中，学生如果实际画出曲线来验证所得推论，会非常有收获。
+
+
+<p>
+<hr><h3>习题 VIII</h3>
+
+<p>
+(1) 用毫米作标度，画出曲线 $y = \tfrac{3}{4} x^2 - 5$。在对应于不同 $x$ 值的点上，
+量出它的倾斜角。
+
+<p>通过对方程求导，求出斜率表达式；再查自然正切表，看看它是否与量得的角度一致。
+
+<p>(2) 求曲线
+\[
+y = 0.12x^3 - 2,
+\]
+在横坐标为 $x = 2$ 的特定点处的斜率。
+
+<p>(3) 如果 $y = (x - a)(x - b)$，证明在曲线上满足 $\dfrac{dy}{dx} = 0$ 的特定点处，
+$x$ 的值为 $\tfrac{1}{2} (a + b)$。
+
+<p>(4) 求方程 $y = x^3 + 3x$ 的 $\dfrac{dy}{dx}$；并计算对应于
+$x = 0$, $x = \tfrac{1}{2}$, $x = 1$, $x = 2$ 的各点处
+$\dfrac{dy}{dx}$ 的数值。
+
+<p>(5) 在方程为 $x^2 + y^2 = 4$ 的曲线中，求斜率 ${} = 1$ 的各点处 $x$ 的值。
+
+<p>(6) 求方程为 $\dfrac{x^2 }{3^2} + \dfrac{y^2}{2^2} = 1$ 的曲线在任意点处的斜率；
+并给出 $x = 0$ 处和 $x = 1$ 处斜率的数值。
+
+<p>(7) 曲线 $y = 5 - 2x + 0.5x^3$ 的一条切线方程形如 $y = mx + n$，
+其中 $m$ 和 $n$ 是常数。如果切线与曲线相切的点的横坐标为 $x=2$，
+求 $m$ 和 $n$ 的值。
+
+<p>(8) 两条曲线
+\[
+y = 3.5x^2 + 2 \quad \text{和} \quad y = x^2 - 5x + 9.5
+\]
+相交时所成的角是多少？
+
+<p>(9) 在 $x = 3$ 和 $x = 4$ 的点处，作曲线 $y = ± \sqrt{25-x^2}$ 的切线。
+求这些切线交点的坐标，以及它们互相的倾角。
+
+<p>(10) 直线 $y = 2x - b$ 在一点处与曲线 $y = 3x^2 + 2$ 相切。
+切点的坐标是什么？$b$ 的值是多少？
+
+
+<p><h3 class="answers">答案</h3>
+
+<p>(2)   $1.44$.
+<p>(4)   $\dfrac{dy}{dx} = 3x^2 + 3$；数值为：
+     $3$, $3 \frac{3}{4}$, $6$ 和 $15$。
+<p>(5)   $ ± \sqrt{2}$.
+<p>(6)   $ \dfrac{dy}{dx} = - \dfrac{4}{9} \dfrac{x}{y}$。在 $x = 0$ 处斜率为零；在 $x = 1$ 处为 $\mp \dfrac{1}{3 \sqrt{2}}$。
+<p>(7)   $m = 4$, $n = -3$.
+<p>(8)   交点在 $x = 1$, $x = -3$。角为 $153°\;26'$, $2°\;28'$。
+<p>(9)   交点在 $x = 3.57$, $y = 3.50$。角为 $16°\;16'$。
+<p>(10)   $x = \frac{1}{3}$, $y = 2 \frac{1}{3}$, $b = -\frac{5}{3}$.
+
+<br>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>涵盖本书所有习题。</li>
+    <li>检查你的答案，或在卡住时获得帮助。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持这个网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="11.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

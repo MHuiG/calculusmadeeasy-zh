@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>用积分求面积 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 19}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>用积分求面积</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p>积分学的一个用途，是帮助我们求出由曲线围成的面积。
+
+<p>我们一点一点来接近这个题目。
+
+<a name="figure52">
+<p><img src="33283-t/images/218a.pdf.png-1.png">
+
+<p>设 $AB$（<a href="19.html#figure52">图 52</a>）是一条方程已知的曲线。
+也就是说，这条曲线上的 $y$ 是 $x$ 的某个已知函数。
+取曲线上从点 $P$ 到点 $Q$ 的一段来想。
+
+<p>从 $P$ 向下作垂线 $PM$，再从点 $Q$ 向下作另一条垂线 $QN$。
+于是记 $OM = x_1$、$ON = x_2$，并记纵坐标
+$PM = y_1$、$QN = y_2$。这样，我们就标出了曲线段 $PQ$
+下方的面积 $PQNM$。问题是：<em>怎样计算这个面积的值</em>？
+
+<p>解决这个问题的秘诀，是把这个面积想成分成许多窄条，
+每一条的宽都是 $dx$。$dx$ 取得越小，$x_1$ 和 $x_2$
+之间这样的窄条就越多。显然，整个面积等于所有这些窄条面积的和。
+于是我们的任务就是找出任意一条窄条面积的表达式，然后对它积分，
+也就是把所有窄条加起来。现在想一想任意一条窄条。它会像这样：
+夹在两条竖边之间，底边是平的 $dx$，上边则是略微弯曲的斜边。
+<a name="figure219a">
+<p><img src="33283-t/images/219a.pdf.png-1.png">
+<p>假设我们把它的<em>平均</em>高度取为 $y$；那么，由于它的宽是
+$dx$，面积就是 $y\, dx$。而且宽度可以随我们愿意取得很窄；
+只要取得足够窄，它的平均高度就会等同于中点处的高度。
+现在把整个面积的未知值记为 $S$，表示面积。一个窄条的面积
+不过是整个面积的一小片，因此可以叫作 $dS$。所以可以写成
+\[
+\text{一条窄条面积} = dS = y · dx.
+\]
+如果把所有窄条加起来，就得到
+\[
+\text{总面积 $S$} = \int dS = \int y\, dx.
+\]
+
+<p>因此，要找到 $S$，就取决于在这个具体情形中，当我们知道
+$y$ 作为 $x$ 的函数是什么时，能不能积分 $y · dx$。
+
+<p>例如，如果有人告诉你，眼前这条特定曲线满足
+$y = b + ax^2$，你当然可以把这个值代入表达式，并说：
+那我必须求 $\int (b + ax^2)\, dx$。
+
+<p>这样固然不错；但稍微想一想就会发现，还必须再做一点事情。
+因为我们要求的并不是整条曲线下方的面积，而只是左边由 $PM$
+限制、右边由 $QN$ 限制的那块面积，所以我们必须做些事情，
+把面积限定在这些“<em>限</em>”之间。<a name="limits"/>
+
+<p>这就引出了一个新概念，也就是<em>定限积分</em>。我们假设 $x$
+是变化的；就目前目的而言，不需要任何低于 $x_1$（也就是 $OM$）
+的 $x$ 值，也不需要任何高于 $x_2$（也就是 $ON$）的 $x$ 值。
+当一个积分这样被两个限界定时，我们把两个值中较低的那个叫作
+<em>下限</em>，较高的那个叫作<em>上限</em>。任何这样带有限的积分，
+我们称为<em>定积分</em>，以区别于没有指定限的<em>一般积分</em>。
+
+<p>在表示积分指令的符号中，限分别写在积分号的上方和下方。
+因此，指令
+\[
+\int_{x=x_1}^{x=x_2} y · dx
+\]
+
+读作：求 $y · dx$ 在下限 $x_1$ 与上限 $x_2$ 之间的积分。
+
+<p>有时这件事写得更简单：
+\[
+\int^{x_2}_{x_1} y · dx.
+\]
+好，可是拿到这样的指令后，<em>怎样</em>求两个限之间的积分呢？
+
+<p>再看<a href="19.html#figure52">图 52</a>。假设我们能够求出从 $A$ 到 $Q$
+这段较大曲线下方的面积，也就是从 $x = 0$ 到 $x = x_2$ 的面积，
+记为 $AQNO$。再假设我们能够求出从 $A$ 到 $P$ 那段较小曲线
+下方的面积，也就是从 $x = 0$ 到 $x = x_1$ 的面积，即 $APMO$。
+那么，用较大面积减去较小面积，剩下的就是 $PQNM$，
+这正是我们想要的面积。这里就有了做法的线索：
+两个限之间的定积分，就是按上限算出的积分与按下限算出的积分
+之间的<em>差</em>。
+
+<p>那么继续。先这样求一般积分：
+\[
+\int y\, dx,
+\]
+而且，由于 $y = b + ax^2$ 是这条曲线（<a href="19.html#figure52">图 52</a>）的方程，
+\[
+\int (b + ax^2)\, dx
+\]
+这就是我们必须求出的一般积分。
+
+<p>按规则完成这个积分，得到
+\[
+bx + \frac{a}{3} x^3 + C;
+\]
+
+这就是从 $0$ 到我们指定的任意 $x$ 值为止的整个面积。
+
+<p>因此，到上限 $x_2$ 为止的较大面积是
+\[
+bx_2 + \frac{a}{3} x_2^3 + C;
+\]
+而到下限 $x_1$ 为止的较小面积是
+\[
+bx_1 + \frac{a}{3} x_1^3 + C.
+\]
+
+<p>现在，用较大者减去较小者，就得到面积 $S$ 的值：
+\[
+\text{面积 $S$} = b(x_2 - x_1) + \frac{a}{3}(x_2^3 - x_1^3).
+\]
+
+<p>这就是我们要的答案。给它一些数值吧。设 $b = 10$，
+$a = 0.06$，并且 $x_2 = 8$、$x_1 = 6$。那么面积 $S$ 等于
+\begin{gather*}
+10(8 - 6) + \frac{0.06}{3} (8^3 - 6^3) \\
+\begin{aligned}
+&= 20 + 0.02(512 - 216)    \\
+&= 20 + 0.02 × 296    \\
+&= 20 + 5.92     \\
+&= 25.92.
+\end{aligned}
+\end{gather*}
+
+<p>在这里，把我们关于限所弄清楚的事情用符号写出来：
+\[
+\int^{x=x_2}_{x=x_1} y\, dx = y_2 - y_1,
+\]
+其中 $y_2$ 是 $y\, dx$ 对应于 $x_2$ 的积分值，
+而 $y_1$ 是对应于 $x_1$ 的积分值。
+
+
+<p>所有定限积分，都需要这样求出两个值之间的差。
+还要注意，在相减时，所加的常数 $C$ 消失了。
+
+<p>
+<p><em>例题</em>
+(1) 为了熟悉这个过程，我们取一个事先知道答案的情形。
+求三角形（<a href="19.html#figure53">图 53</a>）的面积，它的底为 $x = 12$，
+高为 $y = 4$。从显然的量法可知，答案会是 $24$。
+
+<a name="figure3">
+<p><img src="33283-t/images/223a.pdf.png-1.png">
+
+<p>现在，这里的“曲线”是一条斜直线，它的方程是
+\[
+y = \frac{x}{3}.
+\]
+
+<p>所求面积就是
+\[
+\int^{x=12}_{x=0} y · dx = \int^{x=12}_{x=0} \frac{x}{3} · dx.
+\]
+
+<p>对 $\dfrac{x}{3}\, dx$ 积分（见<a href="18.html#diffrule">这里</a>），
+并把一般积分的值写在方括号中，上下标出限，就得到
+
+\begin{align*}
+\text{面积}\;
+  &= \left[ \frac{1}{3} · \frac{1}{2} x^2 \right]^{x=12}_{x=0} + C \\
+  &= \left[ \frac{x^2}{6} \right]^{x=12}_{x=0} + C  \\
+  &= \left[ \frac{12^2}{6} \right] - \left[ \frac{0^2}{6} \right] \\
+  &= \frac{144}{6} = 24.\quad Ans.
+\end{align*}
+
+<p>这个计算小诀窍相当令人惊奇，我们用一个简单例子检验一下，
+让自己信服。找一张方格纸，最好每个方向都是八分之一英寸
+或十分之一英寸的小方格。在这张方格纸上画出方程
+\[
+y = \frac{x}{3}.
+\]
+
+<p>要描出的数值是：
+<table>
+<tr><td>$x$</td><td>$0$</td><td>$3$</td><td>$6$</td><td>$9$</td><td>$12$</td>
+<tr><td>$y$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td>
+</table>
+
+<p>图像见<a href="19.html#figure54">图 54</a>。
+<a name="figure54">
+<p><img src="33283-t/images/224a.pdf.png-1.png">
+
+<p>现在，从 $x = 0$ 一直到右边的 $x = 12$，通过
+<em>数小方格</em>来算出曲线下方的面积。这里有 $18$ 个完整方格，
+还有四个三角形，每个三角形面积等于 $1\frac{1}{2}$ 个方格；
+总共就是 $24$ 个方格。因此，$24$ 就是 $\dfrac{x}{3}\, dx$
+在下限 $x = 0$ 与上限 $x = 12$ 之间积分的数值。
+
+<p>作为进一步练习，证明同一个积分在 $x = 3$ 与 $x = 15$
+两个限之间的值为 $36$。
+
+<a name="figure55">
+<p><img src="33283-t/images/225a.pdf.png-1.png">
+<p>(2) 求曲线 $y = \dfrac{b}{x + a}$ 在 $x = x_1$ 与 $x = 0$
+两个限之间的面积。
+\begin{align*}
+\text{面积}
+  &= \int^{x=x_1}_{x=0} y · dx
+   = \int^{x=x_1}_{x=0} \frac{b}{x+a}\, dx  \\
+
+  &= b \bigl[\log_\epsilon(x + a) \bigr]^{x_1} _{0} + C  \\
+  &= b \bigl[\log_\epsilon(x_1 + a) - \log_\epsilon(0 + a)\bigr]  \\
+  &= b \log_\epsilon \frac{x_1 + a}{a}.\quad Ans .
+\end{align*}
+
+<p><em>注意</em>：注意，在处理定积分时，常数 $C$ 总会通过相减消失。
+
+<p>还要注意，用较大部分减去一部分来求差，其实是很常见的做法。
+怎样求一个平面圆环（<a href="19.html#figure56">图 56</a>）的面积？
+它的外半径是 $r_2$，内半径是 $r_1$。你从量法知道，
+外圆面积是 $\pi r_2^2$；然后求出内圆面积 $\pi r_1^2$；
+再用前者减去后者，得到圆环面积 $= \pi(r_2^2 - r_1^2)$；
+也可以写成
+\[
+\pi(r_2 + r_1)(r_2 - r_1)
+\]
+$= \text{圆环平均周长} × \text{圆环宽度}$.
+<a name="figure56">
+<p><img src="33283-t/images/226a.pdf.png-1.png">
+
+
+<p>(3) 这里还有一个情形，也就是<em>衰减曲线</em>。求方程为
+以下形式的曲线（<a href="19.html#figure57">图 57</a>）在 $x = 0$ 与 $x = a$
+之间的面积：
+\begin{align*}
+y &= b\epsilon^{-x}. \\
+\text{面积}
+  &= b\int^{x=a} _{x=0} \epsilon^{-x} · dx.  \\
+\end{align*}
+  积分（见<a href="18.html#differ3">这里</a>）给出
+\begin{align*}
+  &= b\left[-\epsilon^{-x}\right]^a _0 \\
+  &= b\bigl[-\epsilon^{-a} - (-\epsilon^{-0})\bigr] \\
+  &= b(1-\epsilon^{-a}).
+\end{align*}
+
+<a name="figure57">
+<p><img src="33283-t/images/227a.pdf.png-1.png">
+
+<p>(4) 另一个例子来自理想气体的绝热曲线，它的方程是
+$pv^n = c$，其中 $p$ 表示压强，$v$ 表示体积，
+$n$ 的值为 $1.42$（<a href="19.html#figure58">图 58</a>）。
+<a name="figure58">
+<p><img src="33283-t/images/227b.pdf.png-1.png">
+
+<p>求从体积 $v_2$ 到体积 $v_1$ 的曲线下方面积
+（它与突然压缩气体所做的功成正比）。
+
+<p>这里有
+\begin{align*}
+\text{面积}
+  &= \int^{v=v_2}_{v=v_1} cv^{-n} · dv \\
+  &= c\left[\frac{1}{1-n} v^{1-n} \right]^{v_2} _{v_1} \\
+  &= c \frac{1}{1-n} (v_2^{1-n} - v_1^{1-n}) \\
+  &= \frac{-c}{0.42}\left(\frac{1}{v_2^{0.42}} - \frac{1}{v_1^{0.42}}\right).
+\end{align*}
+
+<p>
+<em>一个练习。</em><p>
+证明通常的量法公式：半径为 $R$ 的圆，其面积 $A$ 等于 $\pi R^2$。
+
+<a name="figure59">
+<p><img src="33283-t/images/228a.pdf.png-1.png">
+
+<p>考虑圆面上的一个基本环带或圆环（<a href="19.html#figure59">图 59</a>），
+宽为 $dr$，位于离圆心距离 $r$ 的地方。我们可以把整个圆面
+看作由这种窄环带组成；整个面积 $A$ 就只是所有这些基本环带
+从圆心到边缘的积分，也就是从 $r = 0$ 积到 $r = R$。
+
+<p>因此，我们要为这个窄环带的基本面积 $dA$ 找一个表达式。
+把它想成宽为 $dr$ 的窄条，而长度就是半径为 $r$ 的圆的周长，
+也就是 $2 \pi r$。于是窄环带的面积为
+\[
+dA = 2 \pi r\, dr.
+\]
+
+<p>因此，整个圆的面积为：
+\[
+A = \int dA
+  = \int^{r=R}_{r=0} 2 \pi r · dr
+  = 2 \pi \int^{r=R}_{r=0} r · dr.
+\]
+
+<p>现在，$r · dr$ 的一般积分是 $\frac{1}{2} r^2$。因此，
+\begin{align*}
+A &= 2 \pi \bigl[\tfrac{1}{2} r^2 \bigr]^{r=R}_{r=0}; \\
+\text{即}\quad
+A &= 2 \pi \bigl[\tfrac{1}{2} R^2 - \tfrac{1}{2}(0)^2\bigr]; \\
+\text{于是}\;
+A &= \pi R^2.
+\end{align*}
+
+<p>
+<em>另一个练习。</em><p>
+来求曲线 $y = x - x^2$ 的正值部分的平均纵坐标，
+该曲线见<a href="19.html#figure60">图 60</a>。要找平均纵坐标，就必须先求出
+$OMN$ 这块面积，再除以底边 $ON$ 的长度。但在求面积之前，
+我们必须确定底边的长度，这样才知道要积分到哪个限。
+在 $N$ 点，纵坐标 $y$ 的值为零；因此，我们必须看方程，
+找出什么 $x$ 值会使 $y = 0$。显然，如果 $x$ 是 $0$，
+$y$ 也会是 $0$，曲线经过原点 $O$；但当 $x=1$ 时，
+$y=0$ 也成立；所以 $x=1$ 给出了点 $N$ 的位置。
+<a name="figure60">
+<p><img src="33283-t/images/229a.pdf.png-1.png">
+<p>于是所求面积为
+\begin{align*}
+  &= \int^{x=1}_{x=0} (x-x^2)\, dx \\
+  &= \left[\tfrac{1}{2} x^2 - \tfrac{1}{3} x^3 \right]^{1}_{0} \\
+  &= \left[\tfrac{1}{2} - \tfrac{1}{3} \right] - [0-0] \\
+  &= \tfrac{1}{6}.
+\end{align*}
+
+<p>而底边长度是 $1$。
+
+<p>因此，这条曲线的平均纵坐标 $= \frac{1}{6}$。
+
+<p>[<em>注意</em>：用求导来找最大纵坐标的高度，会是一个漂亮而简单的
+极值练习。它<em>一定</em>大于平均值。]
+
+<p>任意曲线在 $x= 0$ 到 $x = x_1$ 范围内的平均纵坐标，
+由下面的表达式给出：
+\[
+\text{平均 $y$} = \frac{1}{x_1} \int^{x=x_1}_{x=0} y · dx.
+\]
+
+<p>同样，也可以求出旋转体的表面积。
+
+
+<p>
+<em>例题</em>。曲线 $y=x^2-5$ 绕 $x$ 轴旋转。求 $x=0$
+到 $x=6$ 之间这段曲线所生成的曲面的面积。
+
+<p>曲线上纵坐标为 $y$ 的一点，会描出一个长度为 $2\pi y$ 的圆周；
+与这一点对应、宽为 $dx$ 的曲面窄带，其面积为 $2\pi y\, dx$。
+总面积为
+\begin{align*}
+2\pi \int^{x=6}_{x=0} y\, dx
+  &= 2\pi \int^{x=6}_{x=0} (x^2-5)\, dx
+   = 2\pi \left[\frac{x^3}{3} - 5x\right]^6_0 \\
+  &= 6.28 × 42=263.76.
+\end{align*}
+
+<p>
+<h2>极坐标中的面积。</h2>
+
+<p>如果某块面积边界的方程，是用边界上一点到固定点 $O$
+（见<a href="19.html#figure61">图 61</a>，称为<em>极点</em>）的距离 $r$，
+以及 $r$ 与正水平方向 $OX$ 所成的角来表示的，
+那么刚才说明的过程稍作修改也同样容易适用。
+这时不考虑面积窄条，而考虑一个小三角形 $OAB$，
+其在 $O$ 处的角为 $d\theta$，然后求出组成所需面积的
+所有小三角形之和。
+<a name="figure61">
+<p><img src="33283-t/images/231a.pdf.png-1.png">
+<p>
+这样一个小三角形的面积近似为
+$\dfrac{AB}{2}×r$，或 $\dfrac{r\, d\theta}{2}×r$；因此，曲线与 $r$
+的两个位置之间所包含的那部分面积，
+对应于角 $\theta_1$ 和 $\theta_2$，由下式给出：
+\[
+\tfrac{1}{2} \int^{\theta=\theta_2}_{\theta=\theta_1} r^2\, d\theta.
+\]
+
+<p><hr>
+
+<p>
+<p><em>例题</em>
+(1) 求半径为 $a$ 英寸的圆中，角度为 $1$ 弧度的扇形面积。
+
+<p>这个圆的极坐标方程显然是 $r=a$。面积为
+\[
+\tfrac{1}{2} \int^{\theta=\theta_2}_{\theta=\theta_1} a^2\, d\theta
+  = \frac{a^2}{2} \int^{\theta=1}_{\theta=0} d\theta
+  = \frac{a^2}{2}.
+\]
+
+<p>(2) 求一条曲线第一象限中的面积，这条曲线称为“帕斯卡蜗线”，
+其极坐标方程为 $r=a(1+\cos \theta)$。
+\begin{align*}
+\text{面积}
+  &= \tfrac{1}{2}  \int^{\theta=\frac{\pi}{2}}_{\theta=0} a^2(1+\cos \theta)^2\, d\theta  \\
+  &= \frac{a^2}{2} \int^{\theta=\frac{\pi}{2}}_{\theta=0} (1+2 \cos \theta + \cos^2 \theta)\, d\theta  \\
+  &= \frac{a^2}{2} \left[\theta + 2 \sin \theta + \frac{\theta}{2} + \frac{\sin 2 \theta}{4} \right]^{\frac{\pi}{2}}_{0} \\
+  &= \frac{a^2(3\pi+8)}{8}.
+\end{align*}
+
+
+<p><h2>用积分求体积。</h2>
+
+<p>我们怎样处理曲面上一条小窄带的面积，当然也可以同样容易地
+处理立体中一片小薄片的体积。我们可以把组成整个立体的所有
+小薄片加起来，求出它的体积；这和把组成一块面积的所有小片
+加起来，求出所处理图形的最终面积，是同一回事。
+
+<p><hr>
+
+<p>
+<p><em>例题</em>
+(1) 求半径为 $r$ 的球的体积。
+
+<p>一个薄球壳的体积为 $4\pi x^2\, dx$（见
+<a href="19.html#figure59">图 59</a>）；把组成这个球的所有同心球壳加起来，就有
+\[
+\text{球体积}
+  = \int^{x=r}_{x=0} 4\pi x^2\, dx
+  = 4\pi \left[\frac{x^3}{3} \right]^r_0
+  = \tfrac{4}{3} \pi r^3.
+\]
+
+<a name="figure62">
+<p><img src="33283-t/images/233a.pdf.png-1.png">
+
+<p>我们也可以这样做：球的一片厚度为 $dx$ 的切片，
+其体积为 $\pi y^2\, dx$（见<a href="19.html#figure62">图 62</a>）。
+此外，$x$ 和 $y$ 由下式联系：
+\[
+y^2 = r^2 - x^2.
+\]
+
+\begin{align*}
+   \text{因此}\;
+\text{球体积}
+  &= 2 \int^{x=r}_{x=0} \pi(r^2-x^2)\, dx \\
+  &= 2 \pi \left[ \int^{x=r}_{x=0} r^2\, dx - \int^{x=r}_{x=0} x^2\, dx \right] \\
+  &= 2 \pi \left[r^2x - \frac{x^3}{3} \right]^r_0 = \frac{4\pi}{3} r^3.
+\end{align*}
+
+<p>(2) 求曲线 $y^2=6x$ 在 $x=0$ 到 $x=4$ 之间绕 $x$ 轴旋转
+所生成的立体体积。
+
+<p>这个立体的一片薄片体积为 $\pi y^2\, dx$。
+\begin{align*}
+   \text{因此}\;
+\text{体积}
+  &= \int^{x=4}_{x=0} \pi y^2\, dx = 6\pi \int^{x=4}_{x=0} x\, dx  \\
+  &= 6\pi \left[ \frac{x^2}{2} \right]^4_0 = 48\pi = 150.8.
+\end{align*}
+
+<p><h2>关于均方根值。</h2>
+
+<p>在物理学的某些分支中，尤其是在研究交流电时，需要能够计算
+一个变量的<em>均方根值</em>。所谓“均方根值”，指的是所考察两个限之间
+所有数值的平方的平均值再开平方。任意量的均方根值还有别的名称：
+“有效”值，或“RMS”（均方根）值。
+法语术语是 <em>valeur efficace</em>。如果所考察的函数是 $y$，
+并且要在 $x=0$ 与 $x=l$ 两个限之间取均方根值，那么均方根值表示为
+\[
+\sqrt[2] {\frac{1}{l} \int^l_0 y^2\, dx}.
+\]
+
+
+<p>
+<p><em>例题</em>
+(1) 求函数 $y=ax$（<a href="19.html#figure63">图 63</a>）的均方根值。
+
+<p>这里的积分是 $\int^l_0 a^2 x^2\, dx$，
+也就是 $\frac{1}{3} a^2 l^3$。
+
+<a name="figure63">
+<p><img src="33283-t/images/235a.pdf.png-1.png">
+
+<p>除以 $l$ 并开平方，得到
+\[
+\text{均方根值} = \frac{1}{\sqrt 3}\, al.
+\]
+
+<p>这里的算术平均值是 $\frac{1}{2}al$；均方根值与算术平均值之比
+（这个比值叫作<em>波形因数</em>）是 $\dfrac{2}{\sqrt 3}=1.155$。
+
+<p>(2) 求函数 $y=x^a$ 的均方根值。
+
+<p>积分为 $\int^{x=l}_{x=0} x^{2a}\, dx$，也就是 $\dfrac{l^{2a+1}}{2a+1}$。
+
+ 因此
+均方根值 = $\sqrt[2]{\dfrac{l^{2a}}{2a+1}}$。
+
+
+<p>(3) 求函数 $y=a^{\frac{x}{2}}$ 的均方根值。
+
+<p>积分为 $\int^{x=l}_{x=0} (a^{\frac{x}{2}})^2\, dx$，
+也就是 $\int^{x=l}_{x=0} a^x\, dx$，
+
+ 或
+$\left[ \frac{a^x}{\log_\epsilon a} \right]^{x=l}_{x=0}$,
+
+其值为 $\dfrac{a^l-1}{\log_\epsilon a}$。
+
+<p>因此，均方根值为 $\sqrt[2] {\dfrac{a^l - 1}{l \log_\epsilon a}}$。
+
+<p>
+<hr><h3>习题 XVIII</h3>
+
+(1) 求曲线 $y=x^2+x-5$ 在 $x=0$ 与 $x=6$ 之间的面积，
+以及这些限之间的平均纵坐标。
+
+<p>(2) 求抛物线 $y=2a\sqrt x$ 在 $x=0$ 与 $x=a$ 之间的面积。
+证明它等于由端点纵坐标及其横坐标所成矩形的三分之二。
+
+<p>(3) 求正弦曲线正值部分的面积和平均纵坐标。
+
+<p>(4) 求曲线 $y=\sin^2 x$ 正值部分的面积，并求平均纵坐标。
+
+<p>(5) 求曲线 $y=x^2 ± x^{\frac{5}{2}}$ 的两支在 $x=0$ 到 $x=1$
+之间所夹的面积；并求该曲线下支正值部分的面积
+（见<a href="11.html#figure30">图 30</a>）。
+
+<p>(6) 求底半径为 $r$、高为 $h$ 的圆锥体积。
+
+<p>(7) 求曲线 $y=x^3-\log_\epsilon x$ 在 $x=0$ 与 $x=1$ 之间的面积。
+
+<p>(8) 求曲线 $y=\sqrt{1+x^2}$ 在 $x=0$ 到 $x=4$ 之间绕 $x$ 轴旋转
+所生成的体积。
+
+
+<p>(9) 求一条正弦曲线绕 $x$ 轴旋转所生成的体积。并求其表面积。
+
+<p>(10) 求曲线 $xy=a$ 在 $x=1$ 与 $x = a$ 之间那一部分的面积。
+求这些限之间的平均纵坐标。
+
+<p>(11) 证明函数 $y=\sin x$ 在 $0$ 与 $\pi$ 弧度两个限之间的
+均方根值是 $\dfrac{\sqrt2}{2}$。并求同一函数在相同限之间的
+算术平均值；证明波形因数为 $=1.11$。
+
+<p>(12) 求函数 $x^2+3x+2$ 从 $x=0$ 到 $x=3$ 的算术平均值和均方根值。
+
+<p>(13) 求函数 $y=A_1 \sin x + A_1 \sin 3x$ 的均方根值和算术平均值。
+
+<p>(14) 某曲线的方程为 $y=3.42\epsilon^{0.21x}$。
+求从 $x=2$ 处的纵坐标到 $x = 8$ 处的纵坐标之间，
+曲线与 $x$ 轴所夹的面积。并求曲线在这些点之间的平均纵坐标高度。
+
+<p>(15) 证明：若某圆的面积等于一个极坐标图形面积的两倍，
+则这个圆的半径等于该极坐标图形中所有 $r$ 值的均方根值。
+
+<p>(16) 求曲线 $y=±\dfrac{x}{6}\sqrt{x(10-x)}$ 绕 $x$ 轴旋转
+所生成的体积。
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)  $\text{面积} = 60$; $\text{平均纵坐标} = 10$.
+
+<p>(2)  $\text{面积} = \frac{2}{3}(a × 2a \sqrt{a})$.
+
+<p>(3)  $\text{面积} = 2$; $\text{平均纵坐标} = \dfrac{2}{\pi} = 0.637$.
+
+<p>(4)  $\text{面积} = 1.57$; $\text{平均纵坐标} = 0.5$.
+
+
+<p>(5)  $0.572$, $0.0476$.
+
+<p>(6)  $\text{体积} = \pi r^2 \dfrac{h}{3}$.
+
+<p>(7)  $1.25$.
+
+<p>(8)  $79.4$.
+
+<p>(9)  $\text{体积} = 4.9348$; $\text{表面积} = 12.57$（从 $0$ 到 $\pi$）。
+
+<p>(10)  $a\log_\epsilon a$,&nbsp;&nbsp; $\dfrac{a}{a - 1} \log_\epsilon a$.
+
+<p>(12)  $\text{算术平均值} = 9.5$; $\text{均方根值} = 10.85$.
+
+
+<p>(13)  $\text{均方根值} = \dfrac{1}{\sqrt{2}} \sqrt{A_1^2 + A_3^2}$; $\text{算术平均值} = 0$.
+
+第一项涉及一个稍难的积分，可以这样表述：按定义，均方根值为
+\[
+\sqrt{\dfrac{1}{2\pi} \int_0^{2\pi} (A_1 \sin x + A_3 \sin 3x)^2\, dx}.
+\]
+现在，下面所表示的积分
+\[
+\int (A_1^2 \sin^2 x + 2A_1 A_3 \sin x \sin 3x + A_3^2 \sin^2 3x)\, dx
+\]
+如果把 $\sin^2 x$ 写成
+\[
+\dfrac{1 - \cos 2x}{2}.
+\]
+对 $2\sin x \sin 3x$ 写成 $\cos 2x - \cos 4x$；对 $\sin^2 3x$，
+\[
+\dfrac{1 - \cos 6x}{2}.
+\]
+
+作这些代换并积分，得到（见<a href="18.html#cosax">这里</a>）
+\[
+\dfrac{A_1^2}{2} \left( x - \dfrac{\sin 2x}{2} \right)
+ + A_1 A_3 \left( \dfrac{\sin 2x}{2} - \dfrac{\sin 4x}{4} \right)
+ + \dfrac{A_3^2}{2} \left( x - \dfrac{\sin 6x}{6} \right).
+\]
+
+在下限处，把 $0$ 代入 $x$ 会使这一切都消失；而在上限处，
+把 $2\pi$ 代入 $x$，得到 $A_1^2 \pi + A_3^2 \pi$。
+答案便由此得出。
+
+<p>(14)  面积为 $62.6$ 平方单位。平均纵坐标为 $10.42$。
+
+<p>(16)  $436.3$。（这个立体是梨形的。）
+
+<br>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>涵盖本书全部习题。</li>
+    <li>用于检查你的解答，或在卡住时参考。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持这个网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="20.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

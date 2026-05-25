@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>和、差、积与商 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 6}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>和、差、积与商</h1>
+<p class="a rotatedFloralHeartBullet">
+
+
+<p>我们已经学会了怎样对简单的代数函数求导，
+比如 $x^2 + c$ 或 $ax^4$；现在要看看怎样处理两个或更多函数的<em>和</em><a name="sumdiffer"/>。
+
+<p>例如，设
+\[
+y = (x^2+c) + (ax^4+b);
+\]
+它的 $\dfrac{dy}{dx}$ 会是什么？这个新活儿该怎么下手？
+
+<p>答案很简单：把它们一个接一个地求导就行，像这样：
+\[
+\dfrac{dy}{dx} = 2x + 4ax^3. (Ans.)
+\]
+
+<p>如果你怀疑这是否正确，就试试更一般的情形，
+用第一原理来算。做法如下。
+
+<p>设 $y = u+v$，其中 $u$ 是 $x$ 的任意函数，
+$v$ 是 $x$ 的另一个函数。于是，让 $x$ 增加到 $x+dx$ 时，
+$y$ 会增加到 $y+dy$；$u$ 会增加到 $u+du$；$v$ 会增加到 $v+dv$。
+
+<p>于是有：
+
+<p>$  y+dy = u+du + v+dv.$
+<p>减去原来的 $y = u+v$，得到
+<p>$dy = du+dv, $
+<p>再全式除以 $dx$，得到：
+<p>$\dfrac{dy}{dx} = \dfrac{du}{dx} + \dfrac{dv}{dx}.$
+
+
+<p>这就说明了这种做法为什么成立。把每个函数分别求导，
+再把结果相加。所以如果现在拿前一段的例子，
+把两个函数的值代入，并使用<a href="3.html#note">第三章</a>讲过的记号，就有
+\begin{alignat*}{2}
+\frac{dy}{dx}
+  & = \frac{d(x^2+c)}{dx} &&+ \frac{d(ax^4+b)}{dx} \\
+  & = 2x                  &&+ 4ax^3,
+\end{alignat*}
+结果和前面完全一样。
+
+<p>如果有三个 $x$ 的函数，记作 $u$、$v$ 和 $w$，使得
+\begin{align*}
+y &= u+v+w; \\
+ \text{于是}\;
+\frac{dy}{dx} &= \frac{du}{dx} + \frac{dv}{dx} + \frac{dw}{dx}.
+\end{align*}
+
+<p>至于<em>相减</em>，结论立刻就出来了；因为如果函数 $v$ 本身带有负号，
+它的导数也会带负号；所以对
+\begin{align*}
+y &= u-v, \\
+\text{得到}\;
+\frac{dy}{dx} &= \frac{du}{dx} - \frac{dv}{dx}.
+\end{align*}
+
+
+<p>不过，一旦碰到<em>乘积</em>，事情就没有这么简单了。
+
+<p>假设要我们对下面这个式子求导：
+\[
+y = (x^2+c) × (ax^4+b),
+\]
+该怎么办？结果当然<em>不是</em> $2x × 4ax^3$；
+因为很容易看出，$c × ax^4$ 和 $x^2 × b$ 都没有被算进那个乘积里。
+
+<p>现在有两种做法。
+
+<p><em>第一种方法。</em> 先把乘法做完，展开之后再求导。
+
+<p>于是我们把 $x^2 + c$ 和 $ax^4 + b$ 相乘。
+
+<p>得到 $ax^6 + acx^4 + bx^2 + bc$。
+
+<p>现在求导，得到：
+\[
+\dfrac{dy}{dx} = 6ax^5 + 4acx^3 + 2bx.
+\]
+
+<p><em>第二种方法。</em> 回到第一原理，考虑方程
+\[
+y = u × v;
+\]
+其中 $u$ 是 $x$ 的一个函数，$v$ 是 $x$ 的另一个函数。
+那么，如果 $x$ 增长为 $x+dx$；$y$ 增长为 $y+dy$；
+$u$ 变为 $u+du$，$v$ 变为 $v+dv$，我们就有：
+\begin{align*}
+ y + dy &= (u + du) × (v + dv) \\
+        &= u · v + u · dv + v · du + du · dv.
+\end{align*}
+
+<p>现在 $du · dv$ 是二阶小量，因此在取极限时可以舍去，剩下
+\[
+y + dy = u · v + u · dv + v · du.
+\]
+
+
+<p>然后，减去原来的 $y = u· v$，剩下
+\[
+dy = u · dv + v · du;
+\]
+再全式除以 $dx$，得到结果：
+\[
+\dfrac{dy}{dx} = u\, \dfrac{dv}{dx} + v\, \dfrac{du}{dx}.
+\]
+
+<p>这说明我们的规则如下：<a name="differprod"/>
+<em>要求两个函数乘积的导数，就用每个函数乘以另一个函数的导数，
+再把所得的两个乘积相加。</em>
+
+<p>你应该注意，这个过程等价于下面这样做：
+对 $v$ 求导时把 $u$ 当作常数；接着对 $u$ 求导时把 $v$ 当作常数；
+整个导数 $\dfrac{dy}{dx}$ 就是这两次处理的和。
+
+<p>现在既然找到了这条规则，就把它用到上面那个具体例子里。
+
+<p>我们要求这个乘积的导数：
+\[
+(x^2 + c) × (ax^4 + b).
+\]
+
+<p>记 $(x^2 + c) = u$，并记 $(ax^4 + b) = v$。
+
+<p>于是，按照刚建立的一般规则，可以写成：
+\begin{alignat*}{2}
+\dfrac{dy}{dx}
+&= (x^2 + c)\, \frac{d(ax^4 + b)}{dx} &&+ (ax^4 + b)\, \frac{d(x^2 + c)}{dx} \\
+&= (x^2 + c)\, 4ax^3                  &&+ (ax^4 + b)\, 2x \\
+&= 4ax^5 + 4acx^3                     &&+ 2ax^5 + 2bx,   \\
+
+\dfrac{dy}{dx}
+&= 6ax^5 + 4acx^3                     &&+ 2bx,
+\end{alignat*}
+结果和前面完全一样。
+
+
+<p>最后，我们还要对<em>商</em>求导。
+
+
+<p>想想这个例子：$y = \dfrac{bx^5 + c}{x^2 + a}$。
+在这种情况下，想先把除法算出来没有用，
+因为 $x^2 + a$ 不能整除 $bx^5 + c$，它们也没有公因子。
+所以只好回到第一原理，找出一条规则。
+
+
+   因此我们令
+\[
+y = \frac{u}{v};
+\]
+其中 $u$ 和 $v$ 是自变量 $x$ 的两个不同函数。
+那么，当 $x$ 变为 $x + dx$ 时，$y$ 会变为 $y + dy$；
+$u$ 会变为 $u + du$；$v$ 会变为 $v + dv$。于是
+\[
+y + dy = \dfrac{u + du}{v + dv}.
+\]
+
+<p>现在做代数除法，如下：
+<a name="figure666a">
+<img src="33283-t/images/666a.pdf.png-1.png">
+
+<p>由于这两个余项都是二阶小量，可以忽略，
+除法也就可以到此为止，因为再往后的余项会更小。
+
+<p>所以我们得到：
+\begin{align*}
+y + dy &= \dfrac{u}{v} + \dfrac{du}{v} - \dfrac{u· dv}{v^2}; \\
+\end{align*}
+也可以写成
+\begin{align*}
+&= \dfrac{u}{v} + \dfrac{v· du - u· dv}{v^2}. \\
+\end{align*}
+现在减去原来的 $y = \dfrac{u}{v}$，剩下：
+\begin{align*}
+dy &= \dfrac{v· du - u· dv}{v^2}; \\
+
+ \text{于是}\;
+\dfrac{dy}{dx}
+&= \dfrac{v\, \dfrac{du}{dx} - u\, \dfrac{dv}{dx}}{v^2}.
+\end{align*}
+
+<p>这就给出了<em>怎样对两个函数的商求导。用除数函数乘以被除数函数的导数；
+再用被除数函数乘以除数函数的导数；两者相减。
+最后除以除数函数的平方</em>的规则。
+
+<p>
+回到我们的例子 $y = \dfrac{bx^5 + c}{x^2 + a}$，
+\begin{align*}
+\text{令}\;
+bx^5 + c &= u; \\
+ \text{且}\;
+x^2  + a &= v.
+\end{align*}
+
+<p>于是
+\begin{align*}
+\frac{dy}{dx}
+&= \frac{(x^2 + a)\, \dfrac{d(bx^5 + c)}{dx} - (bx^5 + c)\, \dfrac{d(x^2 + a)}{dx}}{(x^2 + a)^2} \\
+&= \frac{(x^2 + a)(5bx^4) - (bx^5 + c)(2x)}{(x^2 + a)^2}, \\
+\frac{dy}{dx}
+&= \frac{3bx^6 + 5abx^4 - 2cx}{(x^2 + a)^2}.\quad\text{（答案。）}
+\end{align*}
+
+<p>计算商的导数往往很烦，但并没有什么难处。
+
+<p>下面给出一些完整算过的例子。<a name="examples3"/>
+
+<p>(1) 对 $y = \dfrac{a}{b^2} x^3 - \dfrac{a^2}{b} x + \dfrac{a^2}{b^2}$ 求导。
+
+<p>$\dfrac{a^2}{b^2}$ 是常数，所以消失；于是有
+\[
+\frac{dy}{dx} = \frac{a}{b^2} × 3 × x^{3-1} - \frac{a^2}{b} × 1 × x^{1-1}.
+\]
+
+<p>但 $x^{1-1} = x^0 = 1$；所以得到：
+\[
+\frac{dy}{dx} = \frac{3a}{b^2} x^2 - \frac{a^2}{b}.
+\]
+
+<p>(2) 对 $y = 2a\sqrt{bx^3} - \dfrac{3b \sqrt[3]{a}}{x} - 2\sqrt{ab}$ 求导。
+
+<p>把 $x$ 写成指数形式，得到
+\[
+y = 2a\sqrt{b} x^{\frac{3}{2}} - 3b \sqrt[3]{a} x^{-1} - 2\sqrt{ab}.
+\]
+
+<p>现在
+\[
+\frac{dy}{dx} = 2a\sqrt{b} × \tfrac{3}{2} × x^{\frac{3}{2}-1} - 3b\sqrt[3]{a} × (-1) × x^{-1-1}; \\
+ \text{或，}\;
+\frac{dy}{dx} = 3a\sqrt{bx} + \frac{3b\sqrt[3]{a}}{x^2}.
+\]
+
+
+<p>(3) 对 $z = 1.8 \sqrt[3]{\dfrac{1}{\theta^2}} - \dfrac{4.4}{\sqrt[5]{\theta}} - 27°$ 求导。
+
+<p>这可以写成：$z= 1.8\, \theta^{-\frac{2}{3}} - 4.4\, \theta^{-\frac{1}{5}} - 27°$。
+
+<p>$27°$ 消失，于是有
+\[
+\frac{dz}{d\theta}
+  = 1.8 × -\tfrac{2}{3} × \theta^{-\frac{2}{3}-1}
+  - 4.4 × \left(-\tfrac{1}{5}\right)\theta^{-\frac{1}{5}-1}; \\
+ \text{或，}\;
+\frac{dz}{d\theta}
+  = -1.2\, \theta^{-\frac{5}{3}} + 0.88\, \theta^{-\frac{6}{5}}; \\
+\text{或，}\;
+\frac{dz}{d\theta} = \frac{0.88}{\sqrt[5]{\theta^6}}
+  - \frac{1.2}{\sqrt[3]{\theta^5}}.
+\]
+
+<p>(4) 对 $v = (3t^2 - 1.2 t + 1)^3$ 求导。
+
+<p>以后会说明一种直接做法
+（见<a href="9.html#dodge">这里</a>）；不过现在我们照样可以毫不困难地处理它。
+
+<p>展开这个立方，得到
+\[
+v = 27t^6 - 32.4t^5 + 39.96t^4 - 23.328t^3 + 13.32t^2 - 3.6t + 1;
+\]
+因此
+\[
+\frac{dv}{dt} = 162t^5 - 162t^4 + 159.84t^3 - 69.984t^2 + 26.64t - 3.6.
+\]
+
+<p>(5) 对 $y = (2x - 3)(x + 1)^2$ 求导。
+\begin{alignat*}{2}
+\frac{dy}{dx}
+  &= (2x - 3)\, \frac{d\bigl[(x + 1)(x + 1)\bigr]}{dx}
+     &&+ (x + 1)^2\, \frac{d(2x - 3)}{dx} \\
+  &= (2x - 3) \left[(x + 1)\, \frac{d(x + 1)}{dx}\right.
+     &&+ \left.(x + 1)\, \frac{d(x + 1)}{dx}\right] \\
+  &  &&+ (x + 1)^2\, \frac{d(2x - 3)}{dx} \\
+
+  &= 2(x + 1)\bigl[(2x - 3) + (x + 1)\bigr] &&= 2(x + 1)(3x - 2)
+\end{alignat*}
+或者，更简单地，先展开再求导。
+
+
+<p>(6) 对 $y = 0.5 x^3(x-3)$ 求导。
+\begin{align*}
+\frac{dy}{dx}
+  &= 0.5\left[x^3 \frac{d(x-3)}{dx} + (x-3) \frac{d(x^3)}{dx}\right] \\
+  &= 0.5\left[x^3 + (x-3) × 3x^2\right] = 2x^3 - 4.5x^2.
+\end{align*}
+
+<p>说明同前一个例子。
+
+<p>(7) 对 $w = \left(\theta + \dfrac{1}{\theta}\right)
+   \left(\sqrt{\theta} + \dfrac{1}{\sqrt{\theta}}\right)$.
+
+<p>这可以写成
+\begin{gather*}
+w = (\theta + \theta^{-1})(\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}}). \\
+\begin{aligned}
+\frac{dw}{d\theta}
+  &= (\theta + \theta^{-1})
+     \frac{d(\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}})}{d\theta}
+   + (\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}})
+     \frac{d(\theta+\theta^{-1})}{d\theta} \\
+
+  &= (\theta + \theta^{-1})(\tfrac{1}{2}\theta^{-\frac{1}{2}}
+                          - \tfrac{1}{2}\theta^{-\frac{3}{2}})
+   + (\theta^{\frac{1}{2}} + \theta^{-\frac{1}{2}})(1 - \theta^{-2}) \\
+
+  &= \tfrac{1}{2}(\theta^{ \frac{1}{2}} + \theta^{-\frac{3}{2}}
+                - \theta^{-\frac{1}{2}} - \theta^{-\frac{5}{2}})
+   + (\theta^{ \frac{1}{2}} + \theta^{-\frac{1}{2}}
+    - \theta^{-\frac{3}{2}} - \theta^{-\frac{5}{2}}) \\
+
+  &= \tfrac{3}{2} \left(\sqrt{\theta} - \frac{1}{\sqrt{\theta^5}}\right)
+   + \tfrac{1}{2} \left(\frac{1}{\sqrt{\theta}} - \frac{1}{\sqrt{\theta^3}}\right).
+\end{aligned}
+\end{gather*}
+
+<p>同样，这也可以用更简单的办法得到：
+先把两个因子相乘，再求导。不过这并不总是可行；
+例如见<a href="16.html#example1">这里</a>的例 8，那里<em>必须</em>使用乘积求导规则。
+
+<p>(8) 对 $y =\dfrac{a}{1 + a\sqrt{x} + a^2x}$ 求导。
+\begin{align*}
+\frac{dy}{dx}
+  &= \frac{(1 + ax^{\frac{1}{2}} + a^2x) × 0 - a\dfrac{d(1 + ax^{\frac{1}{2}} + a^2x)}{dx}}
+          {(1 + a\sqrt{x} + a^2x)^2} \\
+  &= - \frac{a(\frac{1}{2}ax^{-\frac{1}{2}} + a^2)}
+            {(1 + ax^{\frac{1}{2}} + a^2x)^2}.
+\end{align*}
+
+
+<p>(9) 对 $y = \dfrac{x^2}{x^2 + 1}$ 求导。
+\[
+\dfrac{dy}{dx} = \dfrac{(x^2 + 1)\, 2x - x^2 × 2x}{(x^2 + 1)^2} = \dfrac{2x}{(x^2 + 1)^2}.
+\]
+
+<p>(10) 对 $y = \dfrac{a + \sqrt{x}}{a - \sqrt{x}}$ 求导。
+
+<p>写成指数形式，$y = \dfrac{a + x^{\frac{1}{2}}}{a - x^{\frac{1}{2}}}$。
+\[
+\frac{dy}{dx}
+  = \frac{(a - x^{\frac{1}{2}})( \tfrac{1}{2} x^{-\frac{1}{2}})
+        - (a + x^{\frac{1}{2}})(-\tfrac{1}{2} x^{-\frac{1}{2}})}
+         {(a - x^{\frac{1}{2}})^2}
+  = \frac{ a - x^{\frac{1}{2}}
+         + a + x^{\frac{1}{2}}}
+        {2(a - x^{\frac{1}{2}})^2\, x^{\frac{1}{2}}}; \\
+ \text{因此}\;
+\frac{dy}{dx} = \frac{a}{(a - \sqrt{x})^2\, \sqrt{x}}.
+\]
+
+<p>(11) 对下面的式子求导：
+
+<p>\begin{align*}
+\theta &= \frac{1 - a \sqrt[3]{t^2}}{1 + a \sqrt[2]{t^3}}. \\
+   \text{现在}\;
+\theta &= \frac{1 - at^{\frac{2}{3}}}{1 + at^{\frac{3}{2}}}.
+\end{align*}
+\begin{align*}
+\frac{d\theta}{dt}
+  &= \frac{(1 + at^{\frac{3}{2}}) (-\tfrac{2}{3} at^{-\frac{1}{3}})
+         - (1 - at^{\frac{2}{3}}) × \tfrac{3}{2} at^{\frac{1}{2}}}
+          {(1 + at^{\frac{3}{2}})^2} \\
+  &= \frac{5a^2 \sqrt[6]{t^7} - \dfrac{4a}{\sqrt[3]{t}} - 9a \sqrt[2]{t}}
+          {6(1 + a \sqrt[2]{t^3})^2}.
+\end{align*}
+
+<p>(12) 一个横截面为正方形的水库，其侧面与竖直方向成 $45°$ 角倾斜。
+底部边长为 $200$ 英尺。求水深每变化 $1$ 英尺时流入或流出的水量表达式；
+并据此求出在 $24$ 小时内水深从 $14$ 英尺降到 $10$ 英尺时，
+每小时抽出的水量（以加仑计）。
+
+<p>高度为 $H$、上下底面积为 $A$ 和 $a$ 的棱台体积为
+$V = \dfrac{H}{3} (A + a + \sqrt{Aa} )$。
+很容易看出，由于斜角为 $45°$，若水深为 $h$，
+水面正方形的边长就是 $200 + 2h$ 英尺，因此水的体积为
+\[
+\dfrac{h}{3} [200^2 + (200 + 2h)^2 + 200(200 + 2h)]
+= 40,000h + 400h^2 + \dfrac{4h^3}{3}.
+\]
+
+<p>$\dfrac{dV}{dh} = 40,000 + 800h + 4h^2 = {}$ 每英尺水深变化对应的立方英尺数。
+从 $14$ 英尺到 $10$ 英尺的平均水位是 $12$ 英尺；
+当 $h = 12$ 时，$\dfrac{dV}{dh} = 50,176$ 立方英尺。
+
+<p>水深在 $24$ 小时内变化 $4$ 英尺所对应的每小时加仑数
+${} = \dfrac{4 × 50,176 × 6.25}{24} = 52,267$ 加仑。
+
+<p>(13) 温度为 $t°$ C 时，饱和蒸汽的绝对压力（以大气压计）$P$，
+按 Dulong 给出的公式为 $P = \left( \dfrac{40 + t}{140} \right)^5$，
+只要 $t$ 高于 $80°$ 即可。求 $100°$ C 时压力随温度变化的变化率。
+
+
+<p>用二项式定理展开分子（见<a href="14.html#binomtheo">这里</a>）。
+\[
+P = \frac{1}{140^5} (40^5 + 5×40^4 t + 10 × 40^3 t^2 + 10 × 40^2 t^3
+                            + 5 × 40t^4 + t^5);
+\]
+\begin{align*}
+ \text{因此}\;  \dfrac{dP}{dt} = &\dfrac{1}{537,824 × 10^5}\\
+      &(5 × 40^4 + 20 × 40^3 t + 30 × 40^2 t^2 + 20 × 40t^3 + 5t^4),
+\end{align*}
+当 $t = 100$ 时，这变为每摄氏度温度变化 $0.036$ 个大气压。
+
+<p>
+<hr><h3>习题 III</h3>
+
+<p>
+(1) 求导<a name="examples2"/>
+
+<p>(<em>a</em>)  $u = 1 + x + \dfrac{x^2}{1 × 2} + \dfrac{x^3}{1 × 2 × 3} + \dotsb$.
+<p>(<em>b</em>)  $y = ax^2 + bx + c$. (<em>c</em> ) $y = (x + a)^2$.
+<p>(<em>d</em>)  $y = (x + a)^3$.
+
+<p>(2) 若 $w = at - \frac{1}{2}bt^2$，求 $\dfrac{dw}{dt}$。
+
+<p>(3) 求下面式子的导数：
+\[
+y = (x + \sqrt{-1}) × (x - \sqrt{-1}).
+\]
+
+<p>(4) 对下面式子求导：
+\[
+y = (197x - 34x^2) × (7 + 22x - 83x^3).
+\]
+
+<p>(5) 若 $x = (y + 3) × (y + 5)$，求 $\dfrac{dx}{dy}$。
+
+<p>(6) 对 $y = 1.3709x × (112.6 + 45.202x^2)$ 求导。
+
+
+
+<p>求下面各式的导数：
+
+<p>(7) $y = \dfrac{2x + 3}{3x + 2}$.
+<p>(8) $y = \dfrac{1 + x + 2x^2 + 3x^3}{1 + x + 2x^2}$.
+<p>(9) $y = \dfrac{ax + b}{cx + d}$.
+<p>(10) $y = \dfrac{x^n + a}{x^{-n} + b}$.
+
+
+<p>(11) 白炽电灯灯丝的温度 $t$ 与通过灯的电流之间满足关系
+\[
+C = a + bt + ct^2.
+\]
+
+<p>求一个表达式，给出温度变化所对应的电流变化。
+
+<p>(12) 有人提出以下公式，用来表示一根导线在 $t°$ C 时的电阻 $R$，
+与同一根导线在 $0°$ C 时的电阻 $R_0$ 之间的关系；
+其中 $a$、$b$、$c$ 为常数。
+\begin{align*}
+R &= R_0(1 + at + bt^2). \\
+R &= R_0(1 + at + b\sqrt{t}). \\
+R &= R_0(1 + at + bt^2)^{-1}.
+\end{align*}
+
+<p>分别根据这些公式，求电阻相对于温度的变化率。
+
+<p>(13) 某种标准电池的电动势 $E$ 随温度 $t$ 的变化满足关系
+\[
+E = 1.4340 \bigl[1 - 0.000814(t-15)
+                 + 0.000007(t-15)^2\bigr] \text{ 伏特}.
+\]
+
+<p>求在 $15°$、$20°$ 和 $25°$ 时，每升高一度电动势的变化。
+
+
+<p>(14) Ayrton 夫人发现，要用强度为 $i$ 的电流维持长度为 $l$ 的电弧，
+所需电动势为
+\[
+E = a + bl + \frac{c + kl}{i},
+\]
+其中 $a$、$b$、$c$、$k$ 是常数。
+
+<p>求电动势变化的表达式：
+(<em>a</em>) 相对于电弧长度；
+(<em>b</em>) 相对于电流强度。
+
+
+<p><h3 class="answers">答案</h3>
+
+
+
+<p>(1)  (<em>a</em>) $1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \dfrac{x^4}{24} + \ldots$
+	<p>(<em>b</em>) $2ax + b$.
+	<p>(<em>c</em> ) $2x + 2a$.
+    <p>(<em>d</em>) $3x^2 + 6ax + 3a^2$.
+
+<p>(2)  $\dfrac{dw}{dt} = a - bt$.
+<p>(3)  $\dfrac{dy}{dx} = 2x$.
+<p>(4)  $14110x^4 - 65404x^3 - 2244x^2 + 8192x + 1379$.
+<p>(5)  $\dfrac{dx}{dy} = 2y + 8$.
+<p>(6)  $185.9022654x^2 + 154.36334$.
+<p>(7)  $\dfrac{-5}{(3x + 2)^2}$.
+<p>(8)  $\dfrac{6x^4 + 6x^3 + 9x^2}{(1 + x + 2x^2)^2}$.
+<p>(9)  $\dfrac{ad - bc}{(cx + d)^2}$.
+<p>(10)  $\dfrac{anx^{-n-1} + bnx^{n-1} + 2nx^{-1}}{(x^{-n} + b)^2}$.
+<p>(11)  $b + 2ct$.
+<p>(12)  $R_0(a + 2bt)$,&nbsp;&nbsp; $R_0 \left(a + \dfrac{b}{2\sqrt{t}}\right)$,&nbsp;&nbsp;
+  $-\dfrac{R_0(a + 2bt)}{(1 + at + bt^2)^2}$&nbsp;&nbsp; 或&nbsp;&nbsp; $\dfrac{R^2 (a + 2bt)}{R_0}$.
+
+<p>(13)  $1.4340(0.000014t - 0.001024)$,&nbsp;&nbsp; $-0.00117$,&nbsp;&nbsp; $-0.00107$,&nbsp;&nbsp; $-0.00097$.
+
+<p>(14)  $\dfrac{dE}{dl} = b + \dfrac{k}{i}$,&nbsp;&nbsp; $\dfrac{dE}{di} = -\dfrac{c + kl}{i^2}$.
+
+<p>
+
+<br>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>覆盖本书所有习题。</li>
+    <li>检查你的解答，或在卡住时获得提示。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持这个网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="7.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>

@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>偏微分 | 微积分其实很容易</title>
+<link rel="stylesheet" href="screen.css">
+<style>
+body{counter-reset:h1 16}
+</style>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<h1><br>偏微分</h1>
+<p class="a rotatedFloralHeartBullet">
+
+<p>我们有时会遇到一些量，它们是多个独立变量的函数。
+例如，可能有这样的情形：$y$ 依赖另外两个变量，
+其中一个叫 $u$，另一个叫 $v$。用符号写就是<a name="partialdiff"/>
+
+\[
+dy = \frac{\partial y}{\partial u}\, du + \dfrac{\partial y}{\partial v}\, dv;
+\]
+
+\[
+y = f(u, v).
+\]
+
+取最简单的具体情形。令
+
+\[    y = u×v.
+\]
+
+该怎么办呢？如果把 $v$ 当作常数，并关于 $u$ 求导，我们会得到
+
+\[
+dy_v = v\, du;
+\]
+或者，如果把 $u$ 当作常数，并关于 $v$ 求导，就有：
+\[
+dy_u = u\, dv.
+\]
+
+
+<p>这里放在下标中的小字母，是用来表示在这个操作中哪个量被当作常数。
+
+<p>另一种表示求导只<em>部分地</em>完成的方法，
+也就是只关于独立变量中的<em>一个</em>求导的方法，
+是用像 $\partial$ 这样的希腊字母式符号来写导数，
+而不是用小写 $d$。这样
+\begin{align*}
+\frac{\partial y}{\partial u} &= v, \\
+\frac{\partial y}{\partial v} &= u.
+\end{align*}
+
+<p>如果分别把 $v$ 和 $u$ 的这些值代进去，就有
+
+\[
+dy_v = \frac{\partial y}{\partial u}\, du, \\
+dy_u = \frac{\partial y}{\partial v}\, dv,
+\]
+<p>它们就是<em>偏微分</em>。
+<p>但是，想一想你就会发现，$y$ 的总变化同时依赖这两个东西。
+也就是说，如果两者都在变化，真正的 $dy$ 应该写成
+\[
+dy = \frac{\partial y}{\partial u}\, du + \dfrac{\partial y}{\partial v}\, dv;
+\]
+这叫作<em>总微分</em>。有些书把它写作
+$dy = \left(\dfrac{dy}{du}\right)\, du + \left(\dfrac{dy}{dv}\right)\, dv$。
+
+<p>
+<a name="example1"/><em>例 (1)</em> 求表达式
+$w = 2ax^2 + 3bxy + 4cy^3$ 的偏导数。
+答案是：
+\[
+\left.
+\begin{aligned}
+\frac{\partial w}{\partial x} &= 4ax + 3by. \\
+\frac{\partial w}{\partial y} &= 3bx + 12cy^2.
+\end{aligned} \right\}
+\]
+
+
+<p>第一个是在假设 $y$ 为常数时得到的，
+第二个是在假设 $x$ 为常数时得到的；于是
+\[
+dw = (4ax+3by)\, dx + (3bx+12cy^2)\, dy.
+\]
+
+<p>
+<a name="example2"/><em>例 (2)</em> 令 $z = x^y$。
+于是，先把 $y$、再把 $x$ 当作常数，按通常方法得到
+\[
+\left.
+\begin{aligned}
+\dfrac{\partial z}{\partial x} &= yx^{y-1}, \\
+\dfrac{\partial z}{\partial y} &= x^y × \log_\epsilon x,
+\end{aligned}\right\}
+\]
+所以 $dz = yx^{y-1}\, dx + x^y \log_\epsilon x \, dy$。
+
+<p>
+<a name="example3"/><em>例 (3)</em> 一个高为 $h$、底面半径为 $r$ 的圆锥，
+体积为 $V=\frac{1}{3} \pi r^2 h$。如果高度保持不变而 $r$ 改变，
+体积关于半径的变化率，与半径保持不变而高度改变时
+体积关于高度的变化率不同，因为
+\[
+\left.
+\begin{aligned}
+\frac{\partial V}{\partial r} &= \dfrac{2\pi}{3} rh, \\
+\frac{\partial V}{\partial h} &= \dfrac{\pi}{3} r^2.
+\end{aligned}\right\}
+\]
+
+<p>当半径和高度都改变时，变化量由
+$dV = \dfrac{2\pi}{3} rh\, dr + \dfrac{\pi}{3} r^2\, dh$ 给出。
+
+<p>
+<a name="example4"/><em>例 (4)</em> <a name="Example4"/> 在下面的例子中，
+$F$ 和 $f$ 表示任意形式的两个函数。例如，它们可以是正弦函数、
+指数函数，或者只是两个独立变量 $t$ 与 $x$ 的代数函数。
+明白这一点之后，取表达式
+\begin{align*}
+                    y &= F(x+at) + f(x-at), \\
+ \text{即}\;\quad     y &= F(w) + f(v); \\
+ \text{其中}\;\quad   w &= x+at,\quad \text{且}\quad v = x-at. \\
+   \text{于是}\;\quad   \frac{\partial y}{\partial x}
+                      &= \frac{\partial F(w)}{\partial w} · \frac{\partial w}{\partial x}
+                       + \frac{\partial f(v)}{\partial v} · \frac{\partial v}{\partial x} \\
+                      &= F'(w) · 1 + f'(v) · 1
+\end{align*}
+（其中数字 $1$ 只是 $w$ 和 $v$ 中 $x$ 的系数）
+\begin{align*}
+ \text{且}\; \      \frac{\partial^2 y}{\partial x^2}
+                      &= F''(w) + f''(v). && \\
+   \text{还有}\; \  \frac{\partial y}{\partial t}
+                      &= \frac{\partial F(w)}{\partial w} · \frac{\partial w}{\partial t}
+                      + \frac{\partial f(v)}{\partial v} · \frac{\partial v}{\partial t} \\
+                      &= F'(w) · a - f'(v) a; \\
+ \text{且}\;    \   \frac{\partial^2 y}{\partial t^2}
+                      &= F''(w)a^2 + f''(v)a^2; \\
+ \text{由此}\;  \  \frac{\partial^2 y}{\partial t^2}
+                      &= a^2\, \frac{\partial^2 y}{\partial x^2}.
+\end{align*}
+
+<p>这个微分方程在数学物理中极其重要。
+
+<p><h2>两个独立变量的函数的极值。</h2>
+
+<p>
+<a name="example5"/><em>例 (5)</em> 让我们重新拿起习题 IX 第 4 题。
+
+<p>令 $x$ 和 $y$ 为绳子两段的长度。第三段为 $30-(x+y)$，
+而三角形面积为 $A = \sqrt{s(s-x)(s-y)(s-30+x+y)}$，
+其中 $s$ 是半周长，即 $15$，所以 $A = \sqrt{15P}$，其中
+\begin{align*}
+P &= (15-x)(15-y)(x+y-15) \\
+  &= xy^2 + x^2y - 15x^2 - 15y^2 - 45xy + 450x + 450y - 3375.
+\end{align*}
+
+<p>显然，当 $P$ 取得极大值时，$A$ 也取得极大值。
+\[
+dP = \dfrac{\partial P}{\partial x}\, dx + \dfrac{\partial P}{\partial y}\, dy.
+\]
+要取得极大值（显然在这里不会是极小值），必须同时有
+
+\[
+\dfrac{\partial P}{\partial x} = 0 \quad\text{且}\quad
+\dfrac{\partial P}{\partial y} = 0;
+\]
+也就是
+
+\begin{aligned}
+2xy - 30x + y^2 - 45y + 450 &= 0, \\
+2xy - 30y + x^2 - 45x + 450 &= 0.
+\end{aligned}
+
+<p>一个立刻可得的解是 $x=y$。
+
+<p>现在把这个条件代入 $P$ 的值，就得到
+\[
+P = (15-x)^2 (2x-15) = 2x^3 - 75x^2 + 900x - 3375.
+\]
+对于极大值或极小值，$\dfrac{dP}{dx} = 6x^2 - 150x + 900 = 0$，
+这给出 $x=15$ 或 $x=10$。
+
+<p>显然，$x=15$ 给出极小面积；$x=10$ 给出极大面积，
+因为 $\dfrac{d^2 P}{dx^2} = 12x - 150$，当 $x=15$ 时为 $+30$，
+当 $x=10$ 时为 $-30$。
+
+<p>
+<a name="example6"/><em>例 (6)</em> 求一辆普通铁路煤车的尺寸。
+它的端面为矩形；要求在给定体积 $V$ 下，
+侧面和底面合起来的面积尽可能小。
+
+
+<p>这辆车是一个顶部开口的长方体箱子。
+令 $x$ 为长，$y$ 为宽；则深度为 $\dfrac{V}{xy}$。
+表面积为 $S=xy + \dfrac{2V}{x} + \dfrac{2V}{y}$。
+\[
+dS = \frac{\partial S}{\partial x}\, dx
+   + \frac{\partial S}{\partial y}\, dy
+   = \left(y - \frac{2V}{x^2}\right) dx
+   + \left(x - \frac{2V}{y^2}\right) dy.
+\]
+要取得极小值（显然这里不会是极大值），
+\[
+y - \frac{2V}{x^2} = 0,\quad
+x - \frac{2V}{y^2} = 0.
+\]
+
+<p>这里同样有一个立刻可得的解 $x = y$，所以
+$S = x^2 + \dfrac{4V}{x}\quad$；对于极小值，
+$\dfrac{dS}{dx}= 2x - \dfrac{4V}{x^2} =0$，并且
+\[
+x = \sqrt[3]{2V}.
+\]
+
+<p>
+<hr><h3>习题 XV</h3>
+
+(1) 分别只关于 $x$ 和只关于 $y$，对表达式
+$\dfrac{x^3}{3} - 2x^3y - 2y^2x + \dfrac{y}{3}$ 求导。
+
+<p>(2) 求表达式关于 $x$、$y$ 和 $z$ 的偏导数：
+\[
+x^2yz + xy^2z + xyz^2 + x^2y^2z^2.
+\]
+
+<p>(3) 设 $r^2 = (x-a)^2 + (y-b)^2 + (z-c)^2$。
+
+<p>求 $\dfrac{\partial r}{\partial x} +
+	                   \dfrac{\partial r}{\partial y} +
+	                   \dfrac{\partial r}{\partial z}$ 的值。还要求
+$\dfrac{\partial^2r}{\partial x^2} +
+    \dfrac{\partial^2r}{\partial y^2} +
+    \dfrac{\partial^2r}{\partial z^2}$ 的值。
+
+<p>(4) 求 $y=u^v$ 的总微分。
+
+
+<p>(5) 求 $y=u^3 \sin v$、$y = (\sin x)^u$
+以及 $y = \dfrac{\log_\epsilon u}{v}$ 的总微分。
+
+<p>(6) 验证：三个量 $x$、$y$、$z$ 的乘积为常数 $k$ 时，
+当这三个量相等，它们的和取得极小值。
+
+<p>(7) 求函数的极大值或极小值：
+\[
+u = x + 2xy + y.
+\]
+
+<p>(8) 邮局规定，任何包裹的尺寸不得使其长度加周长超过 $6$ 英尺。
+可以邮寄的最大体积是多少？（<em>a</em>）包裹横截面为矩形时；
+（<em>b</em>）包裹横截面为圆形时。
+
+<p>(9) 把 $\pi$ 分成 $3$ 部分，使它们正弦的连乘积取得极大值或极小值。
+
+<p>(10) 求 $u = \dfrac{\epsilon^{x+y}}{xy}$ 的极大值或极小值。
+
+<p>(11) 求下面函数的极大值和极小值：
+\[
+u = y + 2x - 2 \log_\epsilon y - \log_\epsilon x.
+\]
+
+<p>(12) 一个给定容量的架空索道吊桶，形状是水平放置的等腰三角棱柱，
+顶角在下方，对面的面敞开。求它的尺寸，使建造时所用铁皮最少。
+
+
+<p><h3 class="answers">答案</h3>
+
+<p>(1)   $x^3 - 6x^2 y - 2y^2;\quad \frac{1}{3} - 2x^3 - 4xy$.
+
+<p>(2)   $2xyz + y^2 z + z^2 y + 2xy^2 z^2$;<br>
+     $2xyz + x^2 z + xz^2 + 2x^2 yz^2$;<br>
+     $2xyz + x^2 y + xy^2 + 2x^2 y^2 z$.
+
+<p>(3)   $\dfrac{1}{r} \{ \left(x - a\right) + \left( y - b \right) + \left( z - c \right) \} = \dfrac{ \left( x + y + z \right) - \left( a + b + c \right) }{r}$; $\dfrac{3}{r}$.
+
+<p>(4)   $dy = vu^{v-1}\, du + u^v \log_\epsilon u\, dv$.
+
+<p>(5)   $dy = 3\sin v u^2\, du + u^3 \cos v\, dv$,<br>
+     $dy = u \sin x^{u-1} \cos x\, dx + (\sin x)^u \log_\epsilon \sin x du$,<br>
+     $dy = \dfrac{1}{v}\, \dfrac{1}{u}\, du - \log_\epsilon u \dfrac{1}{v^2}\, dv$.
+
+<p>(7)   当 $x = y = -\frac{1}{2}$ 时为极小值。
+
+<p>(8)   （<em>a</em>）长 $2$ 英尺，宽 = 深 = $1$ 英尺，体积 = $2$ 立方英尺。
+
+ （<em>b</em>）半径 = $\dfrac{2}{\pi}$ 英尺 = $7.46$ 英寸，长 = $2$ 英尺，体积 = $2.54$。
+
+<p>(9)    三部分全相等；乘积为极大值。
+
+<p>(10)   当 $x = y = 1$ 时为极小值。
+
+<p>(11)   极小值：$x = \frac{1}{2}$ 且 $y = 2$。
+
+<p>(12)   顶角 $= 90°$；两条等腰边 = 长度 = $\sqrt[3]{2V}$。
+<br>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<h3>获取完整逐步解答</h3>
+<a href="https://payhip.com/b/2MVru"><img class="cover" src="cover-small.png" width="180px"></a>
+
+<ul>
+    <li>覆盖本书所有习题。</li>
+    <li>检查你的解答，或在卡住时获得帮助。</li>
+    <li>由 CalculusMadeEasy.org 编写</li>
+	<li>支持本网站 ❤️。</li>
+	<li>229 页</li>
+    <li><a href="https://payhip.com/b/2MVru">了解详情</a></li>
+    <br>
+        <a href="https://payhip.com/b/2MVru" class="payhip-buy-button" data-theme="green" data-product="2MVru">9 美元下载</a>
+</ul>
+
+<hr>
+<a href="17.html">下一章 &rarr;</a><br>
+<a href="index.html">主页 &uarr;</a><br>
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-101178221-1');
+</script>
